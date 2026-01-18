@@ -1,3 +1,7 @@
 theme: jekyll-theme-minimal
 title: Habitual Data
 description: The Personal Portfolio of Hampton Abbott.
+header_pages:
+  - index.md
+  - projects.md
+  - blog.md

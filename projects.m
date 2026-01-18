@@ -3,7 +3,6 @@ layout: page
 title: Projects
 permalink: /projects/
 ---
-
 ## Portfolio/Projects
 This section will be updated as the semester progresses. Below is the structure for my upcoming work:
 
@@ -14,3 +13,6 @@ This section will be updated as the semester progresses. Below is the structure 
     * **Method:** Tools and algorithms applied.
     * **Result:** Key findings or outcomes.
     * **Link:** [Repo Link]
+
+### Coursework
+* Assignments and smaller labs will be documented here.

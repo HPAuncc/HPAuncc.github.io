@@ -1,0 +1,14 @@
+---
+layout: page
+title: Blog
+permalink: /blog/
+---
+## Blog
+### Reflecting on Data Science in Social Contexts
+When we look at a model used for predictive analytics in sports or healthcare, it is easy to view it as a series of neutral data points. However, as I delve deeper into my Sports Analytics major, I am realizing that data is never truly "raw"—it is collected by people, about people, and within complex social systems. Learning data science in an interdisciplinary context matters because these models have real-world consequences that extend far beyond a scoreboard or a spreadsheet.   
+
+Modeling social topics and people is a powerful tool, but it requires a high degree of ethical caution. We must account for measurement bias and the feedback loops that occur when data is used to make decisions. For example, in the world of sports, a "black box" scouting algorithm might assign a "Pro-Readiness Score" to a college athlete without revealing its underlying logic. If that model relies on biased historical data, it might inadvertently penalize players from smaller, less-documented programs. In this way, a model doesn't just reflect existing bias; it can actually amplify it. This makes the context of the data just as important as the numbers themselves.   
+
+As a student entering this field, I am focused on the responsibilities that come with handling personal information. Beyond technical accuracy, we have a duty to ensure informed consent, privacy, and fairness. Transparency is key; it isn't enough for a model to work—the people affected by it, whether they are professional athletes or everyday citizens, deserve to understand how those decisions were made. We must proactively consider potential harms before any model is deployed to ensure it is equitable rather than destructive.   
+
+Through this course, I hope to move past a "black box" understanding of algorithms. I want to build a foundation where I can navigate the tension between high-performance analytics and the social responsibility of data privacy. Ultimately, I want my work to reflect a clear understanding that data represents human lives and social systems, not just abstract digits.

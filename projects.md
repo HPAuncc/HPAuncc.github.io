@@ -3,6 +3,7 @@ layout: page
 title: Projects
 permalink: /projects/
 ---
+
 ## Portfolio/Projects
 This section will be updated as the semester progresses. Below is the structure for my upcoming work:
 

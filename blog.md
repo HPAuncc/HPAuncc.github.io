@@ -1,9 +1,8 @@
 ---
 layout: page
-title: Projects
-permalink: /projects/
+title: Blog
+permalink: /blog/
 ---
-
 ## Blog
 ### Reflecting on Data Science in Social Contexts
 When we look at a model used for predictive analytics in sports or healthcare, it is easy to view it as a series of neutral data points. However, as I delve deeper into my Sports Analytics major, I am realizing that data is never truly "raw"—it is collected by people, about people, and within complex social systems. Learning data science in an interdisciplinary context matters because these models have real-world consequences that extend far beyond a scoreboard or a spreadsheet.   

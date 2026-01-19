@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Home
+title: Hampton Abbott
 ---
 
-# Hampton Abbott
+## Portfolio | 2026
 
-Portfolio | 2026
+
 
 [Projects](projects) • [Blog](blog)

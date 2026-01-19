@@ -1,5 +1,5 @@
 
-# Hampton Abbott
+
 ## Data Scientist @ UNC Charlotte
 ### Exploring AI | Analytics
 

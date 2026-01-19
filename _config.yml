@@ -1,5 +1,5 @@
-theme: minima
-title: Welcome to my Personal Portfolio
+theme: Minima
+title: Personal Portfolio
 description: Hampton Abbott || Personal Portfolio
 header_pages:
   - projects.md

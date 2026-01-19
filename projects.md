@@ -1,19 +1,9 @@
 ---
-layout: page
+layout: default
 title: Projects
-permalink: /projects/
 ---
 
-## Portfolio/Projects
-This section will be updated as the semester progresses. Below is the structure for my upcoming work:
+# Projects
 
-### Featured Projects
-* **Project Title (Coming Soon)**
-    * **Problem:** Brief description of the issue.
-    * **Data:** Sources and types used.
-    * **Method:** Tools and algorithms applied.
-    * **Result:** Key findings or outcomes.
-    * **Link:** [Repo Link]
-
-### Coursework
-* Assignments and smaller labs will be documented here.
+- Project 1
+- Project 2

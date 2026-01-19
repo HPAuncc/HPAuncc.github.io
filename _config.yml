@@ -1,6 +1,6 @@
 theme: jekyll-theme-slate
-title: Personal Portfolio
-description: Hampton Abbott || Personal Portfolio
+title: Hampton Abbott
+description: Portfolio | 2026
 header_pages:
   - projects.md
   - blog.md

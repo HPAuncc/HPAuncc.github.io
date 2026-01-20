@@ -3,6 +3,8 @@ layout: default
 title: Hampton Abbott
 ---
 
+<img src="banner_left.jpg" alt="Hampton P. Abbott Banner" style="width:100%;">
+
 ## About Me
 ### Data Science | Analytics | Artificial Intelligence
 

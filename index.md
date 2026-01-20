@@ -3,7 +3,7 @@ layout: default
 title: Portfolio
 ---
 
-<img src="banner_left.jpg" alt="Hampton P. Abbott Banner" style="width:100%;">
+<img src="adjusted_banner_left.jpg" alt="Hampton P. Abbott Banner" style="width:100%;">
 
 ## About Me
 

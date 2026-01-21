@@ -10,3 +10,11 @@ layout: default
     </li>
   {% endfor %}
 </ul>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('h3');
+    if (header && header.textContent.trim() === 'Recent Posts') {
+      header.textContent = 'Blog';
+    }
+  });
+</script>

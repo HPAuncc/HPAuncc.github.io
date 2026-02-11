@@ -3,8 +3,6 @@ layout: default
 title: "Home-Field Advantage in the NFL (2000–2023)"
 nav_exclude: true
 ---
-
-
 # Home-Field Advantage in the NFL (2000–2023)
 
 **Course:** DTSC-2301 — Data Science Foundations  
@@ -147,4 +145,4 @@ The data suggests that structural and environmental factors influence competitiv
 ## View Full Code
 
 GitHub Repository:  
-[DTSC-2301-Project-1](https://github.com/YOUR_USERNAME/DTSC-2301-Project-1)
+[DTSC-2301-Project-1](https://github.com/HPAuncc/DTSC-2301-Project-1)

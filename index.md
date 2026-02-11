@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Portfolio
+title: Personal Portfolio
 ---
 <img src="adjusted_banner_left.jpg" alt="Hampton P. Abbott Banner" style="width:100%;">
 

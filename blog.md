@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Recent Posts
 ---
 ### Recent Posts
 <ul>

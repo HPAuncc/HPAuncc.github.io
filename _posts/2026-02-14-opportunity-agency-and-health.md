@@ -1,8 +1,7 @@
 ---
 layout: post
-title: Opportunity Is Not the Same as Freedom
-date: 2026-02-14
-categories: blog
+title: Opportunity, Agency, and Health: Where Structure Meets Choice
+date: 2026-01-27
 ---
 
 When we talk about health, it is easy to frame it as either personal responsibility or social structure. The Social Determinants of Health remind us that neither explanation is complete on its own. To me, these determinants are the environmental and social conditions that shape the starting line of a person’s life—things like education quality, neighborhood safety, job access, transportation, and healthcare availability. These factors do not dictate outcomes, but they influence the range of challenges and advantages someone must navigate.

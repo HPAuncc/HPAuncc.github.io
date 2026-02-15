@@ -2,7 +2,8 @@
 layout: default
 title: Personal Portfolio
 ---
-<img src="adjusted_banner_left.jpg" alt="Hampton P. Abbott Banner" style="width:100%;">
+<img src="{{ '/assets/images/adjusted_banner_left.jpg' | relative_url }}" alt="Hampton P. Abbott Banner" style="width:100%;">
+
 
 # About Me
 

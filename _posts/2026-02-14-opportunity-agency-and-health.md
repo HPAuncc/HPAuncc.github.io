@@ -10,7 +10,7 @@ The Capabilities Approach adds another layer. Rather than focusing only on resou
 
 Where I see these two ideas connect is in how structure interacts with choice. Social determinants shape the environment, but individuals still act within that environment. People are not passive recipients of circumstance. Agency, effort, discipline, and decision-making matter. At the same time, those decisions are made within real constraints that can either expand or restrict available options.
 
-![Hand-drawn visualization](assets/images/blog-3/opportunity-agency-and-health.jpeg)
+![Hand-drawn visualization](/assets/images/blog-3/opportunity-agency-and-health.jpeg)
 
 The diagram shows that flow: social conditions influence capabilities like time, mobility, and safety. Those capabilities affect whether opportunities can realistically be pursued. Barriers can slow someone down, but they don’t erase agency.
 If we wanted to measure this, we might look at income, education, housing stability, access to healthcare, and environmental risks. But we’d also want to look at long-term health outcomes, independence, and participation in community life. It’s not just about what exists—it’s about what someone can actually do with it.

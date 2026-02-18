@@ -223,4 +223,4 @@ A small percentage change can still matter across thousands of games. At the sam
 
 ## View full code
 GitHub Repository:  
-[DTSC-2301-Project-1](https://github.com/HPAuncc/DTSC-2301/Project-1)
+[DTSC-2301-Project-1](https://github.com/HPAuncc/DTSC-2301-Project-1)

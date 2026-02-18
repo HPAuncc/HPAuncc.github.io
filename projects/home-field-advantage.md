@@ -170,4 +170,4 @@ Small percentage-point changes can still matter at league scale, but conclusions
 
 ## View Full Code
 GitHub Repository:  
-[DTSC-2301-Project-1](https://github.com/HPAuncc/DTSC-2301/Project-1)
+[DTSC-2301-Project-1](https://github.com/HPAuncc/DTSC-2301-Project-1)

@@ -1,148 +1,173 @@
 ---
 layout: default
-title: "Home-Field Advantage in the NFL (2000–2023)"
+title: "Home-Field Advantage in the NFL (2000-2023)"
 nav_exclude: true
 ---
-# Home-Field Advantage in the NFL (2000–2023)
+# Home-Field Advantage in the NFL (2000-2023)
 
-**Course:** DTSC-2301 — Data Science Foundations  
+**Course:** DTSC-2301 Data Science Foundations (UNC Charlotte)  
 **Tools:** Python, pandas, matplotlib, seaborn  
-**Dataset:** nflverse (1999–present game-level data)  
+**Dataset:** nflverse game-level data (`games.csv`)
 
 ---
 
-## Research Question
+## 1) Problem Definition
 
-> To what extent does home-field advantage influence NFL game outcomes, and how has its impact changed from 2000–2023?
+### Research Question
+To what extent does home-field advantage influence NFL game outcomes, and how has that effect changed from 2000-2023?
 
-Home-field advantage is widely accepted in sports culture. Teams are assumed to perform better at home due to crowd support, reduced travel, and familiarity with playing conditions. However, modern changes in league structure, travel logistics, and the COVID-19 season raise an important question:
+### Why this matters
+Home-field advantage is one of the most common claims in sports analytics, but its magnitude may shift over time due to league structure, travel, and game-environment changes. This question is relevant to analysts, fans, and anyone making data-based claims about team performance.
 
-Has home-field advantage weakened over time?
-
----
-
-## Dataset Overview
-
-The analysis uses publicly available NFL game-level data from nflverse:
-
-https://github.com/nflverse/nfldata/raw/master/data/games.csv
-
-Each row represents one NFL game and includes:
-
-- Season and week  
-- Home and away teams  
-- Final scores  
-- Game type (REG, POST, PRE)  
-- Stadium and weather conditions  
-- Overtime indicator  
-
-The dataset was filtered to:
-
-- Seasons 2000–2023  
-- Regular season games only  
-
-Derived variables created:
-
-- **Home Margin** = home_score − away_score  
-- **Home Win Indicator** (1 = win, 0 = loss)  
+### Scope
+This project is exploratory analysis, not prediction.
 
 ---
 
-## Key Findings
+## 2) Data Description and Understanding
 
-### 1️⃣ Home-Field Advantage Exists
+### Data source
+- nflverse `games.csv`
+- https://github.com/nflverse/nfldata/raw/master/data/games.csv
 
-Across 2000–2023, home teams win a clear majority of games. The advantage is statistically meaningful and persistent.
+### What each row represents
+Each row represents one NFL game.
 
----
+### Key variables used
+- `season`
+- `game_type`
+- `home_score`
+- `away_score`
+- `game_id`
 
-### 2️⃣ Home Advantage Has Declined Slightly
+### Sample size
+- Raw file: 7,276 games (1999-2025)
+- After filtering to 2000-2023: 6,447 games
+- Final analysis sample (regular season only): 6,175 games across 24 seasons
+- Average games per season: 257.3 (range 248-272)
+- Ties: 14 games (0.23%)
 
-The trendline shows a gradual narrowing of home win percentage since the early 2000s.
-
-![Home Win Rate Trend](/assets/images/home-field-advantage/home_win_trend.png)
-
-
-The decline becomes most noticeable:
-
-- Post-2015  
-- Most sharply during the 2020 season  
-
----
-
-### 3️⃣ The 2020 Season Is a Structural Outlier
-
-The COVID-19 season shows a pronounced dip in home win rate.
-
-This suggests crowd presence may meaningfully contribute to home advantage.
+### What the data does not directly capture
+The dataset does not directly include attendance intensity, detailed travel burden, injuries, or team/coaching quality controls. Those missing factors matter for causal interpretation.
 
 ---
 
-### 4️⃣ Rolling Trend Confirms Long-Term Softening
+## 3) Cleaning and Preparation Decisions
 
-A five-year rolling average smooths volatility and confirms that home-field advantage, while present, is less dominant than in the early 2000s.
+### Decision A: Restrict to seasons 2000-2023
+**Why:** long enough for trend analysis while staying focused on the modern NFL era.
 
-![Rolling Average Trend](/assets/images/home-field-advantage/rolling_avg.png)
+**Tradeoff:** excludes older historical context and avoids potential incomplete latest-season effects.
 
----
+### Decision B: Focus main claims on regular season
+**Why:** regular season gives stable year-to-year comparability and large sample size.
 
-### 5️⃣ Margin Distribution Shows Moderate Edge
+**Important note:** playoff rows are labeled `WC`, `DIV`, `CON`, and `SB` (not `POST`), so the current postseason export logic produces an empty file. Final claims are therefore anchored to the clean regular-season sample.
 
-The scoring margin distribution confirms that home teams not only win more often, but win by modest scoring margins.
+### Decision C: Coerce scores to numeric and drop invalid rows
+- Converted `home_score` and `away_score` with `errors="coerce"`
+- Dropped rows missing either score
 
-![Margin Distribution](/assets/images/home-field-advantage/margin_distribution.png)
+**Why:** ensures win/loss and margin calculations are valid.
 
----
+**Result:** 0 rows were removed from the regular-season sample, but this remains an important integrity check.
 
-## What Would Be Misleading to Conclude
+### Decision D: Encode wins and ties explicitly
+- `home_win = 1` if home score > away score
+- `home_win = 0` if home score < away score
+- `home_win = NaN` for ties
+- Separate `home_tie` indicator
 
-It would be incorrect to conclude that:
+**Why:** ties should not be incorrectly treated as losses.
 
-- Home-field advantage has disappeared  
-- Crowd noise alone explains the effect  
-- The trend proves causation  
-- Modern NFL has no meaningful home bias  
-
-The analysis is descriptive, not causal.
-
----
-
-## What the Data Does Not Capture
-
-Several contextual factors are not controlled for:
-
-- **Travel Distance:** Cross-country travel and time zones  
-- **Neutral Site Games:** International and alternate stadium games  
-- **Attendance Levels:** Crowd size not directly measured  
-- **Team Strength Controls:** No adjustments for roster or quarterback quality  
-
-This limits causal interpretation.
+### Decision E: Validate one row per game
+`game_id.nunique() == len(df_reg)` (6,175 = 6,175), confirming unique game rows.
 
 ---
 
-## Ethical Reflection
+## 4) Data Understanding and Visualization
 
-Sports analytics influences:
+### Visual 1: Home win rate by season
+![Home win rate by season](/assets/images/home-field-advantage/home_win_trend.png)
 
-- Betting markets  
-- Media narratives  
-- Performance evaluation  
+### Visual 2: Home win rate with rolling trend
+![Home win rate with 5-year rolling average](/assets/images/home-field-advantage/rolling_avg.png)
 
-A simplified conclusion such as “home advantage is disappearing” could influence betting behavior or be misapplied in predictive models.
+### Visual 3: Home scoring margin distribution
+![Distribution of home margin](/assets/images/home-field-advantage/margin_distribution.png)
 
-Responsible interpretation requires transparency about uncertainty and limitations.
+### Why these visuals
+- Seasonal trend line shows year-to-year movement.
+- Rolling trend line separates medium-term signal from seasonal noise.
+- Margin distribution adds context beyond binary win/loss outcomes.
+
+### Why a 5-year rolling average (not 2- or 3-year)?
+I used 5-year smoothing because 2- and 3-year windows were still too volatile for stable trend interpretation.
+
+Observed smoothness (mean absolute year-to-year change in the smoothed series):
+- 2-year: 0.0147
+- 3-year: 0.0112
+- 5-year: 0.0051
+- 7-year: 0.0050
+
+Interpretation: 5-year preserves meaningful shifts (including the 2020 disruption) while reducing short-run noise. A 7-year window adds little extra smoothing but can over-smooth changes.
 
 ---
 
-## Final Takeaway
+## 5) Storytelling and Interpretation
 
-Home-field advantage remains real in the NFL, but its magnitude has modestly declined over the past two decades, with the sharpest disruption occurring during the 2020 season.
+### Core finding
+Home teams won 56.26% of regular-season games in this sample, indicating a persistent home-field advantage.
 
-The data suggests that structural and environmental factors influence competitive balance, but further analysis would be required to identify causal drivers.
+### Trend finding
+Home-field advantage appears weaker than in the early 2000s.
+
+- Highest season: 2003 at 61.33%
+- Lowest season: 2020 at 49.80%
+- 2000-2008 average: 57.03%
+- 2015-2023 average: 54.84%
+- Difference: about -2.19 percentage points
+
+### Margin context
+Mean home score = 23.17, mean away score = 20.94, so average home margin is about +2.23 points.
+
+### Interpretation statement
+The data supports a narrower claim: home-field advantage has not disappeared, but its magnitude appears to have narrowed over time, with a strong disruption around 2020 and partial rebound afterward.
+
+---
+
+## 6) Limitations, Assumptions, and Reflection
+
+### Limits
+This is descriptive analysis, not causal inference.
+
+### Key limitations
+- No controls for team strength, QB quality, injuries, or coaching
+- No direct attendance variable
+- Neutral/international game context not separately modeled
+- Postseason comparison not included in final claims due game-type label mismatch in current pipeline
+
+### Assumptions
+- `game_id` uniquely identifies games
+- Score fields are valid after coercion and missing-value filtering
+- Seasonal aggregation is appropriate for this league-level trend question
+
+### Reflection
+Small percentage-point changes can still matter at league scale, but conclusions must be constrained by uncertainty and omitted variables.
+
+---
+
+## 7) References and Transparency
+
+### Data reference
+- nflverse `games.csv`: https://github.com/nflverse/nfldata/raw/master/data/games.csv
+
+### Tooling transparency
+- Analysis performed in Python using pandas, matplotlib, and seaborn
+- Decisions in preprocessing and smoothing are explicitly justified to keep the workflow auditable
 
 ---
 
 ## View Full Code
-
 GitHub Repository:  
-[DTSC-2301-Project-1](https://github.com/HPAuncc/DTSC-2301-Project-1)
+[DTSC-2301-Project-1](https://github.com/HPAuncc/DTSC-2301/Project-1)

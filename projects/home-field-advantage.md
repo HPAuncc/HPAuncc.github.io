@@ -218,7 +218,6 @@ A small percentage change can still matter across thousands of games. At the sam
 
 ### Tool/process transparency
 - Analysis done in Python with pandas, matplotlib, and seaborn
-- Cleaning and trend decisions are explained in the write-up
 
 ---
 

@@ -12,9 +12,11 @@ nav_exclude: true
 ---
 
 ## Why this project matters
-"Home-field advantage" is one of the most repeated ideas in football analysis. It shows up in broadcasts, betting markets, and fan narratives, often as an assumed truth rather than a measured effect. This project asks a more careful question: not just whether home-field advantage exists, but whether its strength has changed over time.
+People often say NFL teams play better at home. We hear this all the time from fans, TV analysts, and betting discussions. But instead of assuming it is always true, I wanted to check the data.
 
-That distinction matters. A league can still have a home advantage overall while experiencing meaningful long-run shifts in how strong that advantage is.
+This project looks at two things:
+1. Does home-field advantage show up in the data?
+2. Has that advantage changed over time?
 
 ---
 
@@ -23,13 +25,13 @@ That distinction matters. A league can still have a home advantage overall while
 ### Research question
 To what extent does home-field advantage influence NFL game outcomes, and how has that effect changed from 2000-2023?
 
-### Scope and intent
-This is exploratory analysis, not prediction. The goal is to describe trend behavior, quantify effect size, and interpret patterns with appropriate caution.
+### Project goal
+This is an exploratory project. I am trying to understand patterns in past data, not build a prediction model.
 
-### Who might care
-- Fans and media interpreting "home-field advantage" claims
-- Analysts building descriptive league trends
-- Students evaluating how to connect cleaning decisions to interpretation quality
+### Why someone might care
+- Fans who want to understand if "home-field advantage" is real
+- Students learning how to connect data cleaning to good analysis
+- Anyone who wants a data-based answer instead of just opinions
 
 ---
 
@@ -39,117 +41,122 @@ This is exploratory analysis, not prediction. The goal is to describe trend beha
 - nflverse `games.csv`
 - https://github.com/nflverse/nfldata/raw/master/data/games.csv
 
-### Unit of analysis
+### What each row means
 Each row is one NFL game.
 
-### Main fields used
+### Main columns used
 - `season`
 - `game_type`
 - `home_score`
 - `away_score`
 - `game_id`
 
-### Sample size and filtering path
-- Raw file: **7,276** games (1999-2025)
-- Keep 2000-2023 only: **6,447** games
-- Keep regular season only: **6,175** games
-- Seasons covered: **24**
-- Avg games/season: **257.3** (range 248-272)
-- Ties in sample: **14** (0.23%)
+### Other indicators that were available but not used in final analysis
+The dataset also includes other fields such as overtime (`overtime`) and additional game context columns. I reviewed these, but I did not include them in the final analysis because they are outside this project's scope.
 
-### Why this sample definition
-I targeted 2000-2023 to balance depth and comparability in the modern era. The regular season provides the most stable structure for year-over-year comparison.
+This project focuses on one core question: how home win rate changed over time. Adding many extra indicators at once would make the story less clear for this assignment.
+
+### Sample size and filtering steps
+- Raw file: **7,276** games (1999-2025)
+- Keep only 2000-2023: **6,447** games
+- Keep regular season only: **6,175** games
+- Seasons in final sample: **24**
+- Average games per season: **257.3** (range 248-272)
+- Ties: **14** games (0.23%)
+
+### What this data does not include directly
+This dataset does not directly include some things that could matter, like:
+- detailed travel burden,
+- crowd size and noise,
+- injuries,
+- or full team strength controls.
+
+So we can describe patterns, but we should be careful about saying exactly why those patterns happen.
 
 ---
 
-## 3) Cleaning and preprocessing decisions
+## 3) Cleaning and preparation decisions
 
-This section focuses on reasoning, not just steps.
+### Decision A: Use 2000-2023
+**Why:** It gives enough years to study trends, while still focusing on the modern NFL.
 
-### Decision A: Restrict to 2000-2023
-**Why:** captures long-run movement without mixing too much cross-era structural change.
+**Tradeoff:** We leave out older seasons and newer seasons after 2023.
 
-**Tradeoff:** excludes older history and any post-2023 updates.
+### Decision B: Focus on regular-season games
+**Why:** Regular-season data is more consistent year to year, which helps trend comparisons.
 
-### Decision B: Focus analysis on regular-season games
-**Why:** regular season has consistent volume and context each year, making trend comparisons cleaner.
+**Important note:** playoff rows in this dataset are labeled `WC`, `DIV`, `CON`, and `SB` (not `POST`). Because of this, the current postseason export logic produced an empty postseason file. To keep results reliable, I focused final claims on the regular-season sample.
 
-**Important caveat:** playoff rows in this dataset are labeled `WC`, `DIV`, `CON`, and `SB` (not `POST`), so the current postseason export logic yields an empty postseason file. Rather than forcing a weak comparison, final claims stay tied to the validated regular-season sample.
+### Decision C: Make score columns numeric and check for missing values
+- Converted `home_score` and `away_score` to numeric
+- Removed rows missing either score
 
-### Decision C: Coerce score fields to numeric and drop invalid rows
-- `home_score` and `away_score` converted with `errors="coerce"`
-- rows with missing scores removed
+**Why:** This makes sure win/loss calculations are valid.
 
-**Why:** prevents hidden type/data issues from contaminating winner logic.
+**Result:** No regular-season rows were removed, but this check is still important.
 
-**Observed effect:** 0 regular-season rows were dropped, but this validation still matters for reproducibility.
-
-### Decision D: Treat ties explicitly
+### Decision D: Handle ties separately
 - `home_win = 1` for home win
 - `home_win = 0` for home loss
 - `home_win = NaN` for ties
-- separate `home_tie` indicator
+- Also created a separate `home_tie` column
 
-**Why:** forcing ties into 0/1 would bias win-rate interpretation.
+**Why:** Ties should not be counted as losses.
 
-### Decision E: Verify uniqueness with `game_id`
-`game_id.nunique() == len(df_reg)` (6,175 = 6,175), confirming one row per unique game.
+### Decision E: Check for duplicate games
+I verified that `game_id` values are unique in the final sample.
 
 ---
 
-## 4) Visual analysis and why these visuals were chosen
+## 4) Visual analysis
 
 ### Visual 1: Home win rate by season
 ![Home win rate by season](/assets/images/home-field-advantage/home_win_trend.png)
 
-**Why this chart:** It directly answers the trend question by showing year-by-year home win percentage.
+**Why this chart:** It shows how home win rate changes year by year.
 
 **What it shows:**
-- Home teams are usually above 50%, indicating a persistent home edge.
-- The series is volatile year-to-year, which is expected for single-season rates.
-- 2020 is visibly weak relative to surrounding years.
+- Home teams are usually above 50%, so home advantage exists.
+- There is a lot of season-to-season movement.
+- 2020 looks unusually low.
 
 ### Visual 2: Home win rate with 5-year rolling average
 ![Home win rate with 5-year rolling average](/assets/images/home-field-advantage/rolling_avg.png)
 
-**Why this chart:** It separates short-term fluctuation from medium-term direction.
+**Why this chart:** It makes the long-term trend easier to see.
 
-**Why 5-year (not 2- or 3-year):**
-I evaluated smoothness by mean absolute year-to-year change in the smoothed series:
-- 2-year: 0.0147
-- 3-year: 0.0112
-- 5-year: 0.0051
-- 7-year: 0.0050
+**Why 5-year instead of 2- or 3-year:**
+A 2-year or 3-year average still jumps around a lot and can make normal ups and downs look like major trend changes. A 5-year average smooths short-term noise so the long-term direction is easier to read.
 
-A 2- or 3-year window still overreacted to short-run noise. A 7-year window barely improved smoothness over 5-year but reduced responsiveness. The 5-year window gave the best balance between readability and signal retention.
+I also did not use a very long window because that can hide important shifts. So 5 years is a good middle option: smooth enough to see the big pattern, but still able to show major changes like 2020.
 
-### Visual 3: Home margin distribution
+### Visual 3: Home scoring margin distribution
 ![Distribution of home margin](/assets/images/home-field-advantage/margin_distribution.png)
 
-**Why this chart:** Win rate alone is binary; margin distribution adds effect-size context.
+**Why this chart:** Win rate is only yes/no. Margin adds more detail about game outcomes.
 
 **What it shows:**
-- Home teams do not only win slightly more often; they also hold a positive scoring margin on average.
-- The distribution supports a moderate, not extreme, advantage profile.
+- Home teams do not just win a bit more often.
+- They also have a positive average point margin.
 
 ---
 
-## 5) Findings: what changed, when, and by how much
+## 5) Main findings
 
 ### Finding 1: Home-field advantage is real
 Across 6,175 regular-season games, home teams won **56.26%** of games.
 
-### Finding 2: The advantage appears weaker than in the early 2000s
-- Early period (2000-2008) mean home win rate: **57.03%**
-- Later period (2015-2023) mean home win rate: **54.84%**
+### Finding 2: Home advantage looks weaker than in the early 2000s
+- 2000-2008 average home win rate: **57.03%**
+- 2015-2023 average home win rate: **54.84%**
 - Change: **-2.19 percentage points**
 
-### Finding 3: 2020 is the clearest disruption
-- Lowest single-season rate in sample: **2020 at 49.80%**
-- Highest single-season rate: **2003 at 61.33%**
+### Finding 3: 2020 is the lowest season in this sample
+- Lowest season: **2020 at 49.80%**
+- Highest season: **2003 at 61.33%**
 
-### Finding 4: Post-2020 rebound exists, but does not erase the longer-run softening
-The rate rebounds after 2020, but the broader pattern is still consistent with a narrower home edge than in the early 2000s.
+### Finding 4: There is some rebound after 2020
+Home win rate rises after 2020, but still appears lower than many early-2000s years.
 
 ### Margin context
 - Mean home score: **23.17**
@@ -158,51 +165,49 @@ The rate rebounds after 2020, but the broader pattern is still consistent with a
 
 ---
 
-## 6) Interpretation and narrative
+## 6) Interpretation
 
-The strongest defensible conclusion is not "home-field advantage disappeared." It is that the effect remains present but appears less dominant than it was in earlier years.
+The best conclusion is:
+- Home-field advantage still exists,
+- but it appears weaker than it was in earlier years.
 
-This pattern is consistent with multiple possible drivers (travel optimization, communication systems, league parity shifts, environmental changes including the 2020 attendance shock), but this project does not isolate mechanisms. The analysis supports directional interpretation, not causal attribution.
+This project describes patterns in the data. It does not prove a single cause.
 
 ---
 
-## 7) What would be misleading to conclude
+## 7) What would be misleading to say
 
 It would be misleading to claim:
 - home-field advantage is gone,
-- crowd noise alone explains everything,
-- this trend is a direct causal estimate,
-- or that all teams are equally affected.
+- crowd noise is the only cause,
+- or this project proves causation.
 
-Descriptive trend evidence is useful, but only when paired with scope discipline.
+The data supports trends, not final cause-and-effect proof.
 
 ---
 
 ## 8) Limitations, assumptions, and reflection
 
-### Major limitations
-- No controls for team strength, quarterback quality, injuries, coaching stability
+### Main limitations
+- No full controls for team quality, QB quality, injuries, or coaching
 - No direct attendance/crowd variable
-- Neutral/international game context not separately modeled
-- No causal framework (regression, matching, or quasi-experimental design)
+- Neutral/international game context not modeled separately
 
-### Explicit assumptions
-- `game_id` uniquely identifies games
-- score fields are valid after coercion checks
-- seasonal aggregation is appropriate for league-level trend analysis
+### Assumptions
+- `game_id` correctly identifies unique games
+- Score columns are valid after cleaning
+- Seasonal averages are appropriate for this question
 
 ### Reflection
-The most important lesson from this project is that small percentage shifts can still be meaningful at league scale, but overclaiming mechanism is easy when context is omitted. Better analysis means documenting decisions, showing uncertainty, and resisting single-cause narratives.
+A small percentage change can still matter across thousands of games. At the same time, careful analysis means being honest about what the data can and cannot tell us.
 
 ---
 
-## 9) Next steps that would improve the analysis
-
-If this project were extended, the highest-value improvements would be:
-- add attendance/capacity data and test crowd-linked hypotheses directly,
-- separate neutral-site/international games,
-- add controls for team quality and quarterback continuity,
-- compare pre-2010, 2010s, and post-2020 subperiods more formally.
+## 9) Next steps (if I continue this project)
+- Add attendance data to test crowd-related ideas more directly
+- Separate neutral-site/international games
+- Add more controls for team strength
+- Compare more time periods in a formal way
 
 ---
 
@@ -212,8 +217,8 @@ If this project were extended, the highest-value improvements would be:
 - nflverse `games.csv`: https://github.com/nflverse/nfldata/raw/master/data/games.csv
 
 ### Tool/process transparency
-- Analysis performed in Python with pandas, matplotlib, and seaborn.
-- Cleaning and smoothing decisions are explicitly documented to make reasoning auditable.
+- Analysis done in Python with pandas, matplotlib, and seaborn
+- Cleaning and trend decisions are explained in the write-up
 
 ---
 

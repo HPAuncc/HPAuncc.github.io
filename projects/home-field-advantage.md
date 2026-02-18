@@ -214,7 +214,7 @@ A small percentage change can still matter across thousands of games. At the sam
 ## 10) References and transparency
 
 ### Data source
-- [nflverse `games.csv`](https://github.com/nflverse/nfldata/raw/master/data/games.csv)
+- nflverse. *nfldata: games.csv* (GitHub repository dataset file). Retrieved February 18, 2026, from [https://github.com/nflverse/nfldata/raw/master/data/games.csv](https://github.com/nflverse/nfldata/raw/master/data/games.csv)
 
 ### Tool/process transparency
 - Analysis done in Python with pandas, matplotlib, and seaborn

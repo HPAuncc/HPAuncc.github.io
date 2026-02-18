@@ -7,7 +7,7 @@ nav_exclude: true
 
 **Course:** DTSC-2301 Data Science Foundations (UNC Charlotte)  
 **Tools:** Python, pandas, matplotlib, seaborn  
-**Dataset:** nflverse game-level data (`games.csv`)
+**Dataset:** [nflverse game-level data (`games.csv`)](https://github.com/nflverse/nfldata/raw/master/data/games.csv)
 
 ---
 

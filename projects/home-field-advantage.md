@@ -217,7 +217,7 @@ A small percentage change can still matter across thousands of games. At the sam
 - nflverse. *nfldata: games.csv* (GitHub repository dataset file). Retrieved February 18, 2026, from [https://github.com/nflverse/nfldata/raw/master/data/games.csv](https://github.com/nflverse/nfldata/raw/master/data/games.csv)
 
 ### Transparency
-- AI Transparency Note: ChatGPT 5.2 was used as a support tool to polish written explanations for clarity and readability and as a teaching aid during web development (e.g., explaining concepts, troubleshooting, and improving understanding). It was not used to design, generate, or compose the core analytical, technical, or conceptual components of this project. All primary ideas, decisions, and project outcomes remain the author’s own.
+- ChatGPT 5.2 was used as a support tool to polish written explanations for clarity and readability and as a teaching aid during web development (e.g., explaining concepts, troubleshooting, and improving understanding). It was not used to design, generate, or compose the core analytical, technical, or conceptual components of this project. All primary ideas, decisions, and project outcomes remain the author’s own.
 
 ---
 

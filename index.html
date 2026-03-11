@@ -14,11 +14,12 @@ layout: null
         extend: {
           fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
           colors: {
-            nd: '#37352f',
-            ng: '#787774',
-            nb: '#f6f6f5',
-            nl: '#f1f0ef',
-            nbr: '#e3e2e0',
+            nd:   '#37352f',
+            ng:   '#787774',
+            nb:   '#f6f6f5',
+            nl:   '#f1f0ef',
+            nbr:  '#e3e2e0',
+            nteal:'#0f7b6c',
           },
         },
       },
@@ -26,21 +27,25 @@ layout: null
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Inter', system-ui, sans-serif; background: #f6f6f5; color: #37352f; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #ffffff; color: #37352f; }
     .hl:hover { background: #f1f0ef; }
     .ch { transition: box-shadow .15s ease, transform .15s ease; }
-    .ch:hover { box-shadow: 0 4px 20px rgba(0,0,0,.08); transform: translateY(-1px); }
-    .star { color: #f5c518; }
-    .sbar { background: #f5c518; height: 6px; border-radius: 3px; }
+    .ch:hover { box-shadow: 0 4px 20px rgba(0,0,0,.08); transform: translateY(-2px); }
+    .pill { display:inline-flex; align-items:center; gap:6px; border:1px solid #e3e2e0; border-radius:9999px; padding:6px 14px; font-size:13px; color:#37352f; text-decoration:none; background:#fff; transition:background .15s; }
+    .pill:hover { background:#f1f0ef; }
+    .tab-btn { padding:6px 14px; font-size:13px; font-weight:500; border-radius:6px; cursor:pointer; transition:background .15s, color .15s; color:#787774; }
+    .tab-btn.active { background:#37352f; color:#fff; }
+    .tab-panel { display:none; }
+    .tab-panel.active { display:flex; }
   </style>
 </head>
 <body class="antialiased overflow-x-hidden">
 
   <!-- ─── NAV ─── -->
   <nav class="fixed top-0 inset-x-0 z-50 bg-white border-b border-[#e3e2e0]">
-    <div class="max-w-screen-xl mx-auto px-4 h-12 flex items-center justify-between">
+    <div class="max-w-5xl mx-auto px-5 h-12 flex items-center justify-between">
       <a href="/" class="flex items-center gap-2 font-semibold text-sm text-[#37352f]">
         <div class="w-6 h-6 bg-[#37352f] rounded-sm flex items-center justify-center text-white text-[11px] font-black select-none">H</div>
         HP Abbott
@@ -53,199 +58,198 @@ layout: null
       <div class="flex items-center gap-2 text-sm">
         <a href="/projects" class="px-3 py-1 text-[#37352f] hl rounded transition-colors hidden sm:block">Portfolio</a>
         <a href="mailto:abbott.hampton@gmail.com"
-           class="bg-black text-white text-xs font-medium px-3 py-1.5 rounded hover:bg-gray-800 transition-colors">
+           class="bg-[#0f7b6c] text-white text-xs font-semibold px-4 py-1.5 rounded-full hover:bg-[#0a6358] transition-colors">
           Hire me
         </a>
       </div>
     </div>
   </nav>
 
-  <!-- ─── MARKETPLACE BREADCRUMB ─── -->
-  <div class="pt-12">
-    <div class="border-b border-[#e3e2e0] bg-white">
-      <div class="max-w-screen-xl mx-auto px-4 py-1.5 text-xs text-[#787774]">
-        <a href="/projects" class="hover:underline">← Marketplace</a>
+  <!-- ─── BREADCRUMB ─── -->
+  <div class="pt-12 border-b border-[#e3e2e0]">
+    <div class="max-w-5xl mx-auto px-5 py-2 flex items-center gap-1.5 text-xs text-[#787774]">
+      <a href="/" class="hover:underline font-medium text-[#37352f]">HP Abbott</a>
+      <span>/</span>
+      <span>Portfolio</span>
+    </div>
+  </div>
+
+  <!-- ─── HERO ─── -->
+  <div class="max-w-5xl mx-auto px-5 pt-14 pb-10">
+
+    <!-- Avatar + greeting -->
+    <div class="flex items-center gap-5 mb-5">
+      <img src="https://placehold.co/72x72/37352f/ffffff?text=HA"
+           alt="Hampton Abbott"
+           class="w-[72px] h-[72px] rounded-full object-cover flex-shrink-0" />
+      <div>
+        <h1 class="text-3xl md:text-4xl font-black text-[#37352f] leading-tight">
+          Hey there! I am Hampton 👋
+        </h1>
+        <p class="text-[#787774] text-sm mt-1">
+          Data that drives better decisions &middot; Sports Analytics @ UNC Charlotte
+        </p>
       </div>
     </div>
 
-    <!-- ─── MAIN CONTENT ─── -->
-    <div class="max-w-screen-xl mx-auto px-4 py-8">
+    <!-- Link pills -->
+    <div class="flex flex-wrap gap-2 mt-6">
+      <a href="https://www.linkedin.com/in/hamptonabbott" target="_blank" rel="noopener" class="pill">
+        <!-- LinkedIn icon -->
+        <svg class="w-3.5 h-3.5 text-blue-600 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/HPAuncc" target="_blank" rel="noopener" class="pill">
+        <svg class="w-3.5 h-3.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="/blog" class="pill">
+        <svg class="w-3.5 h-3.5 flex-shrink-0 text-[#787774]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536M7 17l-4 1 1-4L16.5 2.5a2.121 2.121 0 013 3L7 17z"/></svg>
+        Blog
+      </a>
+      <a href="/projects" class="pill">
+        <svg class="w-3.5 h-3.5 flex-shrink-0 text-[#787774]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7h18M3 12h18M3 17h12"/></svg>
+        Projects
+      </a>
+      <a href="mailto:abbott.hampton@gmail.com" class="pill">
+        <svg class="w-3.5 h-3.5 flex-shrink-0 text-[#787774]" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+        Email
+      </a>
+    </div>
+  </div>
 
-      <!-- Title + creator + actions -->
-      <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-8">
-        <div>
-          <h1 class="text-2xl md:text-[28px] font-bold text-[#37352f] leading-tight mb-2">Portfolio [Data Analyst]</h1>
-          <div class="flex items-center gap-2">
-            <img src="https://placehold.co/20x20/37352f/ffffff?text=H" alt="Hampton Abbott" class="w-5 h-5 rounded-full" />
-            <span class="text-sm text-[#787774]">by Hampton Abbott</span>
+  <!-- ─── BIO + PROJECT GALLERY ─── -->
+  <div class="max-w-5xl mx-auto px-5 pb-16">
+    <div class="grid md:grid-cols-[2fr_3fr] gap-10 items-start">
+
+      <!-- LEFT: Bio -->
+      <div>
+        <h2 class="text-lg font-bold text-[#37352f] mb-4">About me</h2>
+        <p class="text-[15px] text-[#787774] leading-relaxed mb-4">
+          High-achieving Data Science student and Chancellor's List honoree at UNC Charlotte with experience in
+          data pipelines, predictive maintenance, and customer analytics. Applies data-driven methods to
+          analyze real-world problems and improve operations.
+        </p>
+        <p class="text-[15px] text-[#787774] leading-relaxed mb-4">
+          I am a Sports Analytics major at UNC Charlotte with a deep-rooted passion for the statistics that drive the games
+          we love. While my technical focus is on optimizing performance and strategy in sports, I am equally driven by a
+          passion for digital privacy. I believe that as we collect more data — on the field and off — we have a growing
+          responsibility to handle that information ethically.
+        </p>
+        <p class="text-[15px] text-[#787774] leading-relaxed">
+          My goal is to merge these interests, exploring how high-level analytics can coexist with robust data privacy standards.
+          10+ years of business experience applying analytics across fleet management, e-commerce, events, and residential services.
+        </p>
+
+        <!-- What I bring -->
+        <h3 class="text-sm font-semibold text-[#37352f] mt-8 mb-3">What I bring</h3>
+        <ul class="space-y-2.5 text-[14px] text-[#787774] leading-relaxed">
+          <li class="flex items-start gap-2">
+            <span class="text-[#0f7b6c] mt-0.5 flex-shrink-0">→</span>
+            <span><strong class="font-medium text-[#37352f]">NFL Home-Field Advantage.</strong> Analyzed 6,175 games (2000–2023) with Python, pandas, and nflverse — finding a 56.26% home win rate.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-[#0f7b6c] mt-0.5 flex-shrink-0">→</span>
+            <span><strong class="font-medium text-[#37352f]">Business &amp; Data Experience.</strong> 10+ years applying analytics across fleet management, e-commerce, events, and residential services.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-[#0f7b6c] mt-0.5 flex-shrink-0">→</span>
+            <span><strong class="font-medium text-[#37352f]">IBM Certified.</strong> IBM Data Science &amp; Applied Data Science professional certificates (March 2025).</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-[#0f7b6c] mt-0.5 flex-shrink-0">→</span>
+            <span><strong class="font-medium text-[#37352f]">Data Ethics Focus.</strong> Writing at the intersection of sports analytics, digital privacy, and social responsibility.</span>
+          </li>
+        </ul>
+
+        <!-- Education -->
+        <h3 class="text-sm font-semibold text-[#37352f] mt-8 mb-3">Education</h3>
+        <div class="space-y-3 text-[14px] text-[#787774]">
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 bg-[#f1f0ef] rounded flex items-center justify-center text-[10px] font-black text-[#37352f] flex-shrink-0">UNC</div>
+            <div>
+              <div class="font-medium text-[#37352f]">BS in Data Science</div>
+              <div class="text-xs mt-0.5">UNC Charlotte · Expected Dec 2027</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 bg-[#f1f0ef] rounded flex items-center justify-center text-[10px] font-black text-[#37352f] flex-shrink-0">USC</div>
+            <div>
+              <div class="font-medium text-[#37352f]">BS in Business Administration</div>
+              <div class="text-xs mt-0.5">Darla Moore School, Univ. of South Carolina</div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- ─── 2-COLUMN GRID ─── -->
-      <div class="grid lg:grid-cols-[1fr_340px] gap-8 items-start">
+      <!-- RIGHT: Project gallery (2×2 grid) -->
+      <div>
+        <h2 class="text-lg font-bold text-[#37352f] mb-4">Projects</h2>
+        <div class="grid grid-cols-2 gap-4">
 
-        <!-- LEFT: Portfolio preview mockup -->
-        <div class="bg-white border border-[#e3e2e0] rounded-lg overflow-hidden">
+          <!-- HFA -->
+          <a href="/projects/home-field-advantage" class="block bg-[#f6f6f5] border border-[#e3e2e0] rounded-xl overflow-hidden ch group">
+            <div class="p-5 h-36 flex flex-col justify-between">
+              <div class="flex items-end gap-0.5 h-14">
+                <div class="flex-1 bg-[#d0e8e4] rounded-t" style="height:55%"></div>
+                <div class="flex-1 bg-[#0f7b6c] rounded-t" style="height:90%"></div>
+                <div class="flex-1 bg-[#79c5bc] rounded-t" style="height:65%"></div>
+                <div class="flex-1 bg-[#4aab9f] rounded-t" style="height:80%"></div>
+                <div class="flex-1 bg-[#d0e8e4] rounded-t" style="height:50%"></div>
+                <div class="flex-1 bg-[#0f7b6c] rounded-t" style="height:100%"></div>
+              </div>
+              <div>
+                <div class="text-2xl font-black text-[#37352f]">56.26%</div>
+                <div class="text-[11px] text-[#787774]">home win rate</div>
+              </div>
+            </div>
+            <div class="px-4 py-3 border-t border-[#e3e2e0] bg-white">
+              <div class="text-sm font-semibold text-[#37352f]">Home-Field Advantage</div>
+              <div class="text-[11px] text-[#787774] mt-0.5">NFL · Python · pandas · nflverse</div>
+            </div>
+          </a>
 
-          <!-- Hero preview area -->
-          <div class="bg-[#edf0f5] px-8 pt-8 pb-6">
-            <!-- Mini nav bar -->
-            <div class="flex items-center justify-between mb-8 bg-white rounded-md px-3 py-1.5 shadow-sm">
-              <span class="text-[9px] font-bold text-[#37352f]">HP Abbott</span>
-              <div class="flex gap-3 text-[9px] text-[#787774]"><span>Home</span><span>Blog</span><span>Projects</span></div>
-              <span class="text-[8px] bg-[#37352f] text-white px-2 py-0.5 rounded">Sign up</span>
-            </div>
-            <!-- Mini HFA floating card -->
-            <div class="flex justify-center mb-4">
-              <div class="inline-flex items-center gap-2 bg-white rounded-xl shadow-md px-3 py-2">
-                <div class="w-6 h-6 bg-blue-600 rounded flex items-center justify-center text-white text-[8px] font-bold shadow">HFA</div>
-                <div>
-                  <div class="text-[9px] font-semibold text-[#37352f] leading-none mb-0.5">Home-Field Advantage</div>
-                  <div class="text-[7px] text-[#787774]">NFL · 2000–2023 · 6,175 games</div>
-                </div>
-                <span class="text-[9px] font-bold text-blue-600 ml-1">56.26%</span>
-              </div>
-            </div>
-            <!-- Heading -->
-            <div class="text-center mb-4">
-              <h2 class="text-base md:text-lg font-black text-[#37352f] leading-tight mb-1">Data that drives<br />better decisions</h2>
-              <p class="text-[9px] text-[#787774] mb-3 leading-relaxed">A portfolio at the intersection of sports<br />analytics and data science.</p>
-              <div class="flex justify-center gap-2">
-                <span class="text-[8px] bg-[#37352f] text-white px-3 py-1 rounded-full">View projects &amp; analysis</span>
-                <span class="text-[8px] border border-[#e3e2e0] bg-white text-[#37352f] px-3 py-1 rounded-full">Read the blog</span>
-              </div>
-            </div>
-            <!-- Tools strip -->
-            <div class="text-center mt-4">
-              <div class="text-[7px] text-[#787774] uppercase tracking-widest mb-1">Tools &amp; Technologies</div>
-              <div class="flex justify-center gap-2 flex-wrap text-[8px] font-semibold text-[#e3e2e0]">
-                <span>Python</span><span>·</span><span>pandas</span><span>·</span><span>matplotlib</span><span>·</span><span>seaborn</span><span>·</span><span>nflverse</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sub-previews row -->
-          <div class="border-t border-[#e3e2e0] bg-white px-4 py-4 flex gap-4 overflow-x-auto">
-            <!-- HFA project preview -->
-            <div class="flex-shrink-0 bg-[#edf0f5] rounded-lg p-3 w-44">
-              <div class="text-[8px] font-semibold text-[#37352f] mb-2">Home-Field Advantage</div>
-              <div class="space-y-1 mb-2">
-                <div class="h-1 bg-blue-200 rounded-full w-full"></div>
-                <div class="h-1 bg-gray-200 rounded-full w-3/4"></div>
-                <div class="h-1 bg-gray-200 rounded-full w-5/6"></div>
-              </div>
-              <div class="flex items-end gap-0.5 h-8">
-                <div class="flex-1 bg-blue-200 rounded-t" style="height:55%"></div>
-                <div class="flex-1 bg-blue-500 rounded-t" style="height:90%"></div>
-                <div class="flex-1 bg-blue-300 rounded-t" style="height:65%"></div>
-                <div class="flex-1 bg-blue-400 rounded-t" style="height:80%"></div>
-                <div class="flex-1 bg-blue-200 rounded-t" style="height:50%"></div>
-                <div class="flex-1 bg-blue-500 rounded-t" style="height:100%"></div>
-              </div>
-            </div>
-            <!-- Key findings preview -->
-            <div class="flex-shrink-0 bg-[#edf0f5] rounded-lg p-3 w-44">
-              <div class="text-[8px] font-semibold text-[#37352f] mb-1">Key Findings</div>
-              <div class="text-base font-black text-[#37352f] leading-none">56.26%</div>
-              <div class="text-[7px] text-[#787774] mb-2">home win rate (2000–2023)</div>
-              <div class="space-y-1">
-                <div class="flex items-center gap-1"><div class="w-1 h-1 rounded-full bg-blue-500 flex-shrink-0"></div><div class="h-1 bg-gray-200 rounded flex-1"></div></div>
-                <div class="flex items-center gap-1"><div class="w-1 h-1 rounded-full bg-blue-500 flex-shrink-0"></div><div class="h-1 bg-gray-200 rounded w-3/4"></div></div>
-                <div class="flex items-center gap-1"><div class="w-1 h-1 rounded-full bg-blue-500 flex-shrink-0"></div><div class="h-1 bg-gray-200 rounded w-5/6"></div></div>
-              </div>
-            </div>
-            <!-- Blog preview -->
-            <div class="flex-shrink-0 bg-[#edf0f5] rounded-lg p-3 w-44">
-              <div class="text-[8px] font-semibold text-[#37352f] mb-2">Blog</div>
+          <!-- Blog analysis -->
+          <a href="/blog" class="block bg-[#f6f6f5] border border-[#e3e2e0] rounded-xl overflow-hidden ch group">
+            <div class="p-5 h-36 flex flex-col justify-between">
               <div class="space-y-1.5">
-                <div class="h-1 bg-blue-200 rounded-full w-full"></div>
-                <div class="h-1 bg-gray-200 rounded-full w-5/6"></div>
-                <div class="h-1 bg-gray-200 rounded-full w-4/5"></div>
-                <div class="h-1 bg-gray-200 rounded-full w-3/4"></div>
-                <div class="h-1 bg-blue-100 rounded-full w-full mt-1"></div>
-                <div class="h-1 bg-gray-200 rounded-full w-5/6"></div>
+                <div class="h-2 bg-[#0f7b6c]/30 rounded-full w-full"></div>
+                <div class="h-2 bg-[#e3e2e0] rounded-full w-5/6"></div>
+                <div class="h-2 bg-[#e3e2e0] rounded-full w-4/5"></div>
+                <div class="h-2 bg-[#0f7b6c]/20 rounded-full w-full mt-2"></div>
+                <div class="h-2 bg-[#e3e2e0] rounded-full w-3/4"></div>
+              </div>
+              <div>
+                <div class="text-2xl font-black text-[#37352f]">3</div>
+                <div class="text-[11px] text-[#787774]">published posts</div>
               </div>
             </div>
-          </div>
-        </div>
-
-        <!-- RIGHT: About panel -->
-        <div class="space-y-5">
-          <div class="bg-white border border-[#e3e2e0] rounded-lg p-6">
-            <h2 class="text-sm font-semibold text-[#37352f] mb-3">About Hampton Abbott</h2>
-
-            <p class="text-sm text-[#787774] leading-relaxed mb-4">
-              High-achieving Data Science student and Chancellor's List honoree at UNC Charlotte with experience in
-              data pipelines, predictive maintenance, and customer analytics. Applies data-driven methods to
-              analyze real-world problems and improve operations.
-            </p>
-
-            <p class="text-sm font-semibold text-[#37352f] mb-2">What I bring:</p>
-            <ul class="space-y-2 text-sm text-[#787774] mb-5 leading-relaxed">
-              <li><span class="font-medium text-[#37352f]">NFL Home-Field Advantage.</span> Analyzed 6,175 games (2000–2023) with Python, pandas, and nflverse — finding a 56.26% home win rate.</li>
-              <li><span class="font-medium text-[#37352f]">Business &amp; Data Experience.</span> 10+ years applying analytics across fleet management, e-commerce, events, and residential services.</li>
-              <li><span class="font-medium text-[#37352f]">IBM Certified.</span> IBM Data Science &amp; Applied Data Science professional certificates (March 2025).</li>
-              <li><span class="font-medium text-[#37352f]">Full Stack of Tools.</span> Python · SQL · Java · pandas · NumPy · matplotlib · seaborn · Git · Jupyter.</li>
-              <li><span class="font-medium text-[#37352f]">Data Ethics Focus.</span> Writing at the intersection of sports analytics, digital privacy, and social responsibility.</li>
-            </ul>
-
-            <p class="text-sm text-[#787774] leading-relaxed mb-5">
-              I am a Sports Analytics major at UNC Charlotte with a deep-rooted passion for the statistics that drive the games
-              we love. While my technical focus is on optimizing performance and strategy in sports, I am equally driven by a
-              passion for digital privacy. I believe that as we collect more data—on the field and off—we have a growing
-              responsibility to handle that information ethically. My goal this semester is to merge these interests, exploring
-              how high-level analytics can coexist with robust data privacy standards.
-            </p>
-
-            <!-- Education -->
-            <p class="text-[10px] font-semibold text-[#37352f] uppercase tracking-wider mb-2">Education</p>
-            <div class="space-y-1.5 text-sm text-[#787774] mb-5">
-              <div><span class="font-medium text-[#37352f]">BS in Data Science</span> (Expected 2027) — UNC Charlotte</div>
-              <div><span class="font-medium text-[#37352f]">BS in Business Administration</span> — Darla Moore School, Univ. of South Carolina</div>
+            <div class="px-4 py-3 border-t border-[#e3e2e0] bg-white">
+              <div class="text-sm font-semibold text-[#37352f]">Data Ethics &amp; Writing</div>
+              <div class="text-[11px] text-[#787774] mt-0.5">Blog · Social Contexts · Privacy</div>
             </div>
+          </a>
 
-            <!-- Skills tags -->
-            <p class="text-[10px] font-semibold text-[#37352f] uppercase tracking-wider mb-2">Skills</p>
-            <div class="flex flex-wrap gap-1.5 mb-5">
-              <span class="text-[11px] bg-[#f1f0ef] text-[#787774] px-2.5 py-1 rounded">Python</span>
-              <span class="text-[11px] bg-[#f1f0ef] text-[#787774] px-2.5 py-1 rounded">SQL</span>
-              <span class="text-[11px] bg-[#f1f0ef] text-[#787774] px-2.5 py-1 rounded">Java</span>
-              <span class="text-[11px] bg-[#f1f0ef] text-[#787774] px-2.5 py-1 rounded">pandas</span>
-              <span class="text-[11px] bg-[#f1f0ef] text-[#787774] px-2.5 py-1 rounded">NumPy</span>
-              <span class="text-[11px] bg-[#f1f0ef] text-[#787774] px-2.5 py-1 rounded">matplotlib</span>
-              <span class="text-[11px] bg-[#f1f0ef] text-[#787774] px-2.5 py-1 rounded">seaborn</span>
-              <span class="text-[11px] bg-[#f1f0ef] text-[#787774] px-2.5 py-1 rounded">Git / GitHub</span>
-              <span class="text-[11px] bg-[#f1f0ef] text-[#787774] px-2.5 py-1 rounded">Jupyter</span>
-              <span class="text-[11px] bg-[#f1f0ef] text-[#787774] px-2.5 py-1 rounded">VS Code</span>
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/hamptonabbott" target="_blank" rel="noopener" class="block bg-[#f6f6f5] border border-[#e3e2e0] rounded-xl overflow-hidden ch group">
+            <div class="p-5 h-36 flex flex-col justify-center items-center">
+              <svg class="w-12 h-12 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
             </div>
-
-            <!-- Contact -->
-            <p class="text-[10px] font-semibold text-[#37352f] uppercase tracking-wider mb-2">Contact</p>
-            <div class="space-y-1.5 text-sm text-[#787774] mb-4">
-              <div class="flex items-center gap-2">
-                <svg class="w-3.5 h-3.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
-                <a href="mailto:abbott.hampton@gmail.com" class="hover:underline">abbott.hampton@gmail.com</a>
-              </div>
-              <div class="flex items-center gap-2">
-                <svg class="w-3.5 h-3.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                <a href="https://github.com/HPAuncc" target="_blank" rel="noopener" class="hover:underline">github.com/HPAuncc</a>
-              </div>
-              <div class="flex items-center gap-2">
-                <svg class="w-3.5 h-3.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                <a href="https://www.linkedin.com/in/hamptonabbott" target="_blank" rel="noopener" class="hover:underline">linkedin.com/in/hamptonabbott</a>
-              </div>
+            <div class="px-4 py-3 border-t border-[#e3e2e0] bg-white">
+              <div class="text-sm font-semibold text-[#37352f]">LinkedIn Profile</div>
+              <div class="text-[11px] text-[#787774] mt-0.5">in/hamptonabbott</div>
             </div>
+          </a>
 
-            <!-- Social icons + last edited -->
-            <div class="flex items-center gap-3 text-[#787774]">
-              <a href="https://github.com/HPAuncc" target="_blank" rel="noopener" aria-label="GitHub" class="hover:text-[#37352f] transition-colors">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-              </a>
-              <a href="https://www.linkedin.com/in/hamptonabbott" target="_blank" rel="noopener" aria-label="LinkedIn" class="hover:text-[#37352f] transition-colors">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-              </a>
-              <span class="text-[10px]">Last edited Mar 11, 2026</span>
+          <!-- Coming soon -->
+          <div class="block bg-[#f6f6f5] border border-[#e3e2e0] border-dashed rounded-xl overflow-hidden opacity-60">
+            <div class="p-5 h-36 flex flex-col justify-center items-center">
+              <span class="text-4xl text-[#e3e2e0] font-light leading-none">+</span>
+              <span class="text-xs text-[#787774] mt-2">Coming soon</span>
+            </div>
+            <div class="px-4 py-3 border-t border-[#e3e2e0] bg-white">
+              <div class="text-sm font-semibold text-[#787774]">Next Project</div>
+              <div class="text-[11px] text-[#787774] mt-0.5">In progress</div>
             </div>
           </div>
 
@@ -253,268 +257,262 @@ layout: null
       </div>
     </div>
   </div>
+
+  <!-- ─── DIVIDER ─── -->
+  <div class="border-t border-[#e3e2e0]"></div>
+
+  <!-- ─── SKILLS ─── -->
+  <div class="max-w-5xl mx-auto px-5 py-14">
+    <h2 class="text-2xl font-bold text-[#37352f] mb-2">Skills &amp; Tools</h2>
+    <p class="text-[#787774] text-sm mb-8">Technologies I use across data analysis, modeling, and development.</p>
+
+    <!-- Tabs -->
+    <div class="flex gap-2 mb-6" id="skill-tabs">
+      <button class="tab-btn active" data-tab="languages">Languages</button>
+      <button class="tab-btn" data-tab="libraries">Libraries</button>
+      <button class="tab-btn" data-tab="tools">Tools</button>
+    </div>
+
+    <!-- Tab panels -->
+    <div id="tab-languages" class="tab-panel active flex-wrap gap-3">
+      <div class="flex items-center gap-3 border border-[#e3e2e0] rounded-xl px-5 py-4 bg-white ch w-40">
+        <div class="text-2xl">🐍</div>
+        <div><div class="text-sm font-semibold text-[#37352f]">Python</div><div class="text-[11px] text-[#787774]">Primary</div></div>
+      </div>
+      <div class="flex items-center gap-3 border border-[#e3e2e0] rounded-xl px-5 py-4 bg-white ch w-40">
+        <div class="text-2xl">🗄️</div>
+        <div><div class="text-sm font-semibold text-[#37352f]">SQL</div><div class="text-[11px] text-[#787774]">Queries &amp; DBs</div></div>
+      </div>
+      <div class="flex items-center gap-3 border border-[#e3e2e0] rounded-xl px-5 py-4 bg-white ch w-40">
+        <div class="text-2xl">☕</div>
+        <div><div class="text-sm font-semibold text-[#37352f]">Java</div><div class="text-[11px] text-[#787774]">OOP</div></div>
+      </div>
+    </div>
+
+    <div id="tab-libraries" class="tab-panel flex-wrap gap-3">
+      <div class="flex items-center gap-3 border border-[#e3e2e0] rounded-xl px-5 py-4 bg-white ch w-44">
+        <div class="text-2xl">🐼</div>
+        <div><div class="text-sm font-semibold text-[#37352f]">pandas</div><div class="text-[11px] text-[#787774]">Data wrangling</div></div>
+      </div>
+      <div class="flex items-center gap-3 border border-[#e3e2e0] rounded-xl px-5 py-4 bg-white ch w-44">
+        <div class="text-2xl">🔢</div>
+        <div><div class="text-sm font-semibold text-[#37352f]">NumPy</div><div class="text-[11px] text-[#787774]">Numerical</div></div>
+      </div>
+      <div class="flex items-center gap-3 border border-[#e3e2e0] rounded-xl px-5 py-4 bg-white ch w-44">
+        <div class="text-2xl">📊</div>
+        <div><div class="text-sm font-semibold text-[#37352f]">matplotlib</div><div class="text-[11px] text-[#787774]">Visualization</div></div>
+      </div>
+      <div class="flex items-center gap-3 border border-[#e3e2e0] rounded-xl px-5 py-4 bg-white ch w-44">
+        <div class="text-2xl">🎨</div>
+        <div><div class="text-sm font-semibold text-[#37352f]">seaborn</div><div class="text-[11px] text-[#787774]">Statistical plots</div></div>
+      </div>
+      <div class="flex items-center gap-3 border border-[#e3e2e0] rounded-xl px-5 py-4 bg-white ch w-44">
+        <div class="text-2xl">🏈</div>
+        <div><div class="text-sm font-semibold text-[#37352f]">nflverse</div><div class="text-[11px] text-[#787774]">NFL data</div></div>
+      </div>
+    </div>
+
+    <div id="tab-tools" class="tab-panel flex-wrap gap-3">
+      <div class="flex items-center gap-3 border border-[#e3e2e0] rounded-xl px-5 py-4 bg-white ch w-44">
+        <div class="text-2xl">🌿</div>
+        <div><div class="text-sm font-semibold text-[#37352f]">Git / GitHub</div><div class="text-[11px] text-[#787774]">Version control</div></div>
+      </div>
+      <div class="flex items-center gap-3 border border-[#e3e2e0] rounded-xl px-5 py-4 bg-white ch w-44">
+        <div class="text-2xl">💻</div>
+        <div><div class="text-sm font-semibold text-[#37352f]">VS Code</div><div class="text-[11px] text-[#787774]">Editor</div></div>
+      </div>
+      <div class="flex items-center gap-3 border border-[#e3e2e0] rounded-xl px-5 py-4 bg-white ch w-44">
+        <div class="text-2xl">📓</div>
+        <div><div class="text-sm font-semibold text-[#37352f]">Jupyter</div><div class="text-[11px] text-[#787774]">Notebooks</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── DIVIDER ─── -->
+  <div class="border-t border-[#e3e2e0]"></div>
+
+  <!-- ─── COMPANIES / EXPERIENCE ─── -->
+  <div class="max-w-5xl mx-auto px-5 py-14">
+    <h2 class="text-2xl font-bold text-[#37352f] mb-2">Experience &amp; Affiliations</h2>
+    <p class="text-[#787774] text-sm mb-10">Organizations I've built with, studied at, or earned credentials from.</p>
+
+    <div class="flex flex-wrap gap-x-12 gap-y-8 items-center">
+      <div>
+        <div class="text-3xl md:text-4xl font-black text-[#37352f] leading-none">Royal Rides</div>
+        <div class="text-xs text-[#787774] mt-1 font-medium uppercase tracking-wide">LLC · Managing Member · 2021–2025</div>
+      </div>
+      <div>
+        <div class="text-3xl md:text-4xl font-black text-[#37352f] leading-none">UNC Charlotte</div>
+        <div class="text-xs text-[#787774] mt-1 font-medium uppercase tracking-wide">Data Science · Chancellor's List</div>
+      </div>
+      <div>
+        <div class="text-3xl md:text-4xl font-black text-blue-700 leading-none">IBM</div>
+        <div class="text-xs text-[#787774] mt-1 font-medium uppercase tracking-wide">Data Science Certified · 03/2025</div>
+      </div>
+      <div>
+        <div class="text-3xl md:text-4xl font-black text-[#37352f] leading-none">Darla Moore</div>
+        <div class="text-xs text-[#787774] mt-1 font-medium uppercase tracking-wide">Business Administration · USC</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── DIVIDER ─── -->
+  <div class="border-t border-[#e3e2e0]"></div>
 
   <!-- ─── RESEARCH & WRITING ─── -->
-  <div class="border-t border-[#e3e2e0]">
-    <div class="max-w-screen-xl mx-auto px-4 py-10">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-xl font-bold text-[#37352f]">Research &amp; Writing</h2>
-        <a href="/blog" class="text-sm text-[#787774] hover:underline">All posts →</a>
+  <div class="max-w-5xl mx-auto px-5 py-14">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <h2 class="text-2xl font-bold text-[#37352f] mb-1">Research &amp; Writing</h2>
+        <p class="text-[#787774] text-sm">Data ethics, sports analytics, and social contexts.</p>
       </div>
-      <div class="flex flex-col md:flex-row gap-10 md:gap-16">
+      <a href="/blog" class="text-sm text-[#787774] hover:underline hidden sm:block">All posts →</a>
+    </div>
 
-        <!-- Key stat sidebar -->
-        <div class="flex-shrink-0 w-full md:w-48">
-          <div class="bg-white border border-[#e3e2e0] rounded-lg p-5 mb-4">
-            <div class="text-3xl font-black text-[#37352f] leading-none mb-0.5">56.26%</div>
-            <div class="text-xs text-[#787774] mb-3">NFL home win rate (2000–2023)</div>
-            <a href="/projects/home-field-advantage" class="text-xs font-semibold text-[#37352f] hover:underline">Read analysis →</a>
+    <div class="grid md:grid-cols-3 gap-4">
+
+      <!-- HFA key finding -->
+      <a href="/projects/home-field-advantage" class="block bg-white border border-[#e3e2e0] rounded-xl overflow-hidden ch">
+        <div class="bg-[#f0f9f8] p-5 h-32 flex flex-col justify-between">
+          <div class="flex items-end gap-0.5 h-14">
+            <div class="flex-1 bg-[#d0e8e4] rounded-t" style="height:55%"></div>
+            <div class="flex-1 bg-[#0f7b6c] rounded-t" style="height:90%"></div>
+            <div class="flex-1 bg-[#79c5bc] rounded-t" style="height:65%"></div>
+            <div class="flex-1 bg-[#4aab9f] rounded-t" style="height:80%"></div>
+            <div class="flex-1 bg-[#d0e8e4] rounded-t" style="height:50%"></div>
+            <div class="flex-1 bg-[#0f7b6c] rounded-t" style="height:100%"></div>
           </div>
-          <div class="bg-white border border-[#e3e2e0] rounded-lg p-5">
-            <div class="text-3xl font-black text-[#37352f] leading-none mb-0.5">6,175</div>
-            <div class="text-xs text-[#787774] mb-1">games analyzed</div>
-            <div class="text-xs text-[#787774]">24 seasons · 2000–2023</div>
+          <div class="flex items-end gap-1">
+            <span class="text-2xl font-black text-[#37352f]">56.26%</span>
+            <span class="text-xs text-[#787774] mb-0.5">home win rate</span>
           </div>
         </div>
-
-        <!-- Post cards -->
-        <div class="flex-1 space-y-4">
-
-          <!-- HFA key finding -->
-          <div class="bg-white border border-[#e3e2e0] rounded-lg p-5">
-            <p class="font-semibold text-sm text-[#37352f] mb-2">Key Finding: Home-Field Advantage is Real — and Declining</p>
-            <p class="text-sm text-[#787774] leading-relaxed">"Across 6,175 regular-season games from 2000–2023, home teams won <strong class="text-[#37352f]">56.26%</strong> of the time. The advantage is real — but it appears weaker than it was in the early 2000s, and 2020 stands out as the most extreme outlier (49.80%)."</p>
-            <div class="flex items-center gap-2 mt-3">
-              <div class="w-5 h-5 rounded-full bg-[#e3e2e0] flex items-center justify-center text-[7px] font-bold text-[#787774]">H</div>
-              <a href="/projects/home-field-advantage" class="text-xs text-[#787774] hover:underline">Hampton Abbott · Home-Field Advantage Project</a>
-            </div>
+        <div class="p-4 border-t border-[#e3e2e0]">
+          <div class="flex items-center gap-1.5 mb-2">
+            <div class="w-4 h-4 rounded-full bg-[#e3e2e0] flex items-center justify-center text-[7px] font-bold text-[#787774]">H</div>
+            <span class="text-[10px] text-[#787774]">Hampton Abbott · Project</span>
           </div>
+          <div class="text-sm font-semibold text-[#37352f] leading-snug">Home-Field Advantage is Real — and Declining</div>
+        </div>
+      </a>
 
-          <!-- Blog 1 -->
-          <div class="bg-white border border-[#e3e2e0] rounded-lg p-5">
-            <p class="font-semibold text-sm text-[#37352f] mb-2">Reflecting on Data Science in Social Contexts</p>
-            <p class="text-sm text-[#787774] leading-relaxed">Exploring how data analytics intersects with social responsibility and ethics — what it means to collect, analyze, and present data with integrity in a data-driven world.</p>
-            <div class="flex items-center gap-2 mt-3">
-              <div class="w-5 h-5 rounded-full bg-[#e3e2e0] flex items-center justify-center text-[7px] font-bold text-[#787774]">H</div>
-              <a href="/2026/01/16/reflecting-on-data-science.html" class="text-xs text-[#787774] hover:underline">Hampton Abbott · Jan 16, 2026</a>
-            </div>
+      <!-- Blog 1 -->
+      <a href="/2026/01/16/reflecting-on-data-science.html" class="block bg-white border border-[#e3e2e0] rounded-xl overflow-hidden ch">
+        <div class="bg-[#f6f6f5] p-5 h-32 flex flex-col justify-end">
+          <div class="space-y-1.5">
+            <div class="h-1.5 bg-[#0f7b6c]/30 rounded-full w-full"></div>
+            <div class="h-1.5 bg-[#e3e2e0] rounded-full w-5/6"></div>
+            <div class="h-1.5 bg-[#e3e2e0] rounded-full w-4/5"></div>
           </div>
-
-          <!-- Blog 2 -->
-          <div class="bg-white border border-[#e3e2e0] rounded-lg p-5">
-            <p class="font-semibold text-sm text-[#37352f] mb-2">Ethically Ambiguous Data Modeling: Navigating the Gray Areas</p>
-            <p class="text-sm text-[#787774] leading-relaxed">Navigating the gray areas in data modeling — when algorithms amplify bias and what practitioners can do to build more equitable, transparent systems.</p>
-            <div class="flex items-center gap-2 mt-3">
-              <div class="w-5 h-5 rounded-full bg-[#e3e2e0] flex items-center justify-center text-[7px] font-bold text-[#787774]">H</div>
-              <a href="/2026/01/27/ethically-ambiguous-data-modeling.html" class="text-xs text-[#787774] hover:underline">Hampton Abbott · Jan 27, 2026</a>
-            </div>
+        </div>
+        <div class="p-4 border-t border-[#e3e2e0]">
+          <div class="flex items-center gap-1.5 mb-2">
+            <div class="w-4 h-4 rounded-full bg-[#e3e2e0] flex items-center justify-center text-[7px] font-bold text-[#787774]">H</div>
+            <span class="text-[10px] text-[#787774]">Hampton Abbott · Jan 16, 2026</span>
           </div>
+          <div class="text-sm font-semibold text-[#37352f] leading-snug">Reflecting on Data Science in Social Contexts</div>
+        </div>
+      </a>
 
-          <!-- Blog 3 -->
-          <div class="bg-white border border-[#e3e2e0] rounded-lg p-5">
-            <p class="font-semibold text-sm text-[#37352f] mb-2">Opportunity, Agency, and Health: Where Structure Meets Choice</p>
+      <!-- Blog 2 -->
+      <a href="/2026/01/27/ethically-ambiguous-data-modeling.html" class="block bg-white border border-[#e3e2e0] rounded-xl overflow-hidden ch">
+        <div class="bg-[#f6f6f5] p-5 h-32 flex items-center justify-center">
+          <svg width="60" height="60" viewBox="0 0 60 60">
+            <circle cx="30" cy="30" r="24" fill="none" stroke="#e3e2e0" stroke-width="7"/>
+            <circle cx="30" cy="30" r="24" fill="none" stroke="#0f7b6c" stroke-width="7"
+              stroke-dasharray="100 51" stroke-dashoffset="25" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="p-4 border-t border-[#e3e2e0]">
+          <div class="flex items-center gap-1.5 mb-2">
+            <div class="w-4 h-4 rounded-full bg-[#e3e2e0] flex items-center justify-center text-[7px] font-bold text-[#787774]">H</div>
+            <span class="text-[10px] text-[#787774]">Hampton Abbott · Jan 27, 2026</span>
+          </div>
+          <div class="text-sm font-semibold text-[#37352f] leading-snug">Ethically Ambiguous Data Modeling</div>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Blog 3 full-width card -->
+    <div class="mt-4">
+      <a href="/2026/02/14/opportunity-agency-and-health.html" class="block bg-white border border-[#e3e2e0] rounded-xl overflow-hidden ch">
+        <div class="flex flex-col sm:flex-row items-stretch">
+          <div class="sm:w-48 bg-[#f6f6f5] p-5 flex items-center justify-center flex-shrink-0">
+            <img src="https://placehold.co/180x80/e2e8f0/94a3b8?text=visualization" alt="" class="w-full rounded" />
+          </div>
+          <div class="flex-1 p-5 border-t sm:border-t-0 sm:border-l border-[#e3e2e0]">
+            <div class="flex items-center gap-1.5 mb-2">
+              <div class="w-4 h-4 rounded-full bg-[#e3e2e0] flex items-center justify-center text-[7px] font-bold text-[#787774]">H</div>
+              <span class="text-[10px] text-[#787774]">Hampton Abbott · Feb 14, 2026</span>
+            </div>
+            <div class="text-sm font-semibold text-[#37352f] mb-2">Opportunity, Agency, and Health: Where Structure Meets Choice</div>
             <p class="text-sm text-[#787774] leading-relaxed">Where structure meets choice — a look at how data can illuminate the intersection of social opportunity, individual agency, and public health outcomes.</p>
-            <div class="flex items-center gap-2 mt-3">
-              <div class="w-5 h-5 rounded-full bg-[#e3e2e0] flex items-center justify-center text-[7px] font-bold text-[#787774]">H</div>
-              <a href="/2026/02/14/opportunity-agency-and-health.html" class="text-xs text-[#787774] hover:underline">Hampton Abbott · Feb 14, 2026</a>
-            </div>
-          </div>
-
-          <div class="text-center pt-1">
-            <a href="/blog" class="text-sm text-[#787774] hover:underline">View all posts →</a>
           </div>
         </div>
-      </div>
+      </a>
+    </div>
+
+    <div class="text-center mt-6">
+      <a href="/blog" class="text-sm text-[#787774] hover:underline">View all posts →</a>
     </div>
   </div>
 
-  <!-- ─── MORE BY HAMPTON ─── -->
-  <div class="border-t border-[#e3e2e0]">
-    <div class="max-w-screen-xl mx-auto px-4 py-10">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-xl font-bold text-[#37352f]">More by Hampton Abbott</h2>
-        <a href="/projects" class="text-sm text-[#787774] hover:underline">All projects →</a>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+  <!-- ─── DIVIDER ─── -->
+  <div class="border-t border-[#e3e2e0]"></div>
 
-        <!-- HFA Project card -->
-        <a href="/projects/home-field-advantage" class="block bg-white border border-[#e3e2e0] rounded-lg overflow-hidden ch">
-          <div class="bg-[#edf0f5] p-4 h-24 flex items-center justify-center">
-            <div class="text-center">
-              <div class="text-2xl font-black text-[#37352f]">56.26%</div>
-              <div class="text-[9px] text-[#787774]">home win rate</div>
+  <!-- ─── CONTACT ─── -->
+  <div class="max-w-5xl mx-auto px-5 py-14">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+
+      <!-- Contact text -->
+      <div>
+        <h2 class="text-2xl font-bold text-[#37352f] mb-3">Let's connect</h2>
+        <p class="text-[#787774] text-[15px] leading-relaxed mb-6">
+          Open to data analyst roles, sports analytics projects, and freelance analytics work.
+          Charlotte, NC — available remotely.
+        </p>
+        <div class="space-y-3 text-[14px] text-[#787774]">
+          <a href="mailto:abbott.hampton@gmail.com" class="flex items-center gap-3 hover:text-[#37352f] transition-colors">
+            <div class="w-8 h-8 bg-[#f1f0ef] rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
             </div>
-          </div>
-          <div class="p-3 border-t border-[#e3e2e0]">
-            <div class="text-xs font-semibold text-[#37352f] mb-0.5">Home-Field Advantage</div>
-            <div class="text-[10px] text-[#787774]">NFL · Python · pandas</div>
-          </div>
-        </a>
-
-        <!-- LinkedIn card -->
-        <a href="https://www.linkedin.com/in/hamptonabbott" target="_blank" rel="noopener" class="block bg-white border border-[#e3e2e0] rounded-lg overflow-hidden ch">
-          <div class="bg-[#f1f0ef] p-4 h-24 flex flex-col items-center justify-center gap-1">
-            <svg class="w-7 h-7 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-          </div>
-          <div class="p-3 border-t border-[#e3e2e0]">
-            <div class="text-xs font-semibold text-[#37352f] mb-0.5">LinkedIn Profile</div>
-            <div class="text-[10px] text-[#787774]">in/hamptonabbott</div>
-          </div>
-        </a>
-
-        <!-- Coming soon -->
-        <div class="block bg-white border border-[#e3e2e0] rounded-lg overflow-hidden opacity-50 hidden md:block">
-          <div class="bg-[#f1f0ef] p-4 h-24 flex items-center justify-center">
-            <span class="text-3xl text-[#e3e2e0] font-light">+</span>
-          </div>
-          <div class="p-3 border-t border-[#e3e2e0]">
-            <div class="text-xs font-semibold text-[#787774] mb-0.5">Coming Soon</div>
-            <div class="text-[10px] text-[#787774]">Free</div>
-          </div>
+            abbott.hampton@gmail.com
+          </a>
+          <a href="https://github.com/HPAuncc" target="_blank" rel="noopener" class="flex items-center gap-3 hover:text-[#37352f] transition-colors">
+            <div class="w-8 h-8 bg-[#f1f0ef] rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </div>
+            github.com/HPAuncc
+          </a>
+          <a href="https://www.linkedin.com/in/hamptonabbott" target="_blank" rel="noopener" class="flex items-center gap-3 hover:text-[#37352f] transition-colors">
+            <div class="w-8 h-8 bg-[#f1f0ef] rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </div>
+            linkedin.com/in/hamptonabbott
+          </a>
         </div>
-
-        <div class="block bg-white border border-[#e3e2e0] rounded-lg overflow-hidden opacity-50 hidden md:block">
-          <div class="bg-[#f1f0ef] p-4 h-24 flex items-center justify-center">
-            <span class="text-3xl text-[#e3e2e0] font-light">+</span>
-          </div>
-          <div class="p-3 border-t border-[#e3e2e0]">
-            <div class="text-xs font-semibold text-[#787774] mb-0.5">Coming Soon</div>
-            <div class="text-[10px] text-[#787774]">Free</div>
-          </div>
+        <div class="mt-7">
+          <a href="mailto:abbott.hampton@gmail.com"
+             class="inline-flex items-center gap-2 bg-[#0f7b6c] text-white font-semibold text-sm px-5 py-2.5 rounded-full hover:bg-[#0a6358] transition-colors">
+            Get in touch →
+          </a>
         </div>
-
       </div>
+
+      <!-- Illustration -->
+      <div class="hidden md:flex items-center justify-center">
+        <img src="https://placehold.co/340x260/f6f6f5/e3e2e0?text=Let%27s+work+together"
+             alt="Contact illustration"
+             class="rounded-2xl border border-[#e3e2e0] w-full max-w-sm" />
+      </div>
+
     </div>
   </div>
 
-  <!-- ─── MORE LIKE THIS (blog posts) ─── -->
-  <div class="border-t border-[#e3e2e0]">
-    <div class="max-w-screen-xl mx-auto px-4 py-10">
-      <h2 class="text-xl font-bold text-[#37352f] mb-6">Latest Writing</h2>
-      <div class="grid md:grid-cols-3 gap-4">
-
-        <!-- Blog 1 -->
-        <a href="/2026/01/16/reflecting-on-data-science.html" class="block bg-white border border-[#e3e2e0] rounded-lg overflow-hidden ch">
-          <div class="bg-[#edf0f5] p-4 h-28 flex items-end">
-            <div class="w-full flex items-end gap-1 h-14">
-              <div class="flex-1 bg-blue-200 rounded-t" style="height:55%"></div>
-              <div class="flex-1 bg-blue-500 rounded-t" style="height:90%"></div>
-              <div class="flex-1 bg-blue-200 rounded-t" style="height:65%"></div>
-              <div class="flex-1 bg-blue-400 rounded-t" style="height:80%"></div>
-              <div class="flex-1 bg-blue-200 rounded-t" style="height:50%"></div>
-              <div class="flex-1 bg-blue-500 rounded-t" style="height:100%"></div>
-            </div>
-          </div>
-          <div class="p-3 border-t border-[#e3e2e0]">
-            <div class="flex items-center justify-between mb-1">
-              <div class="flex items-center gap-1">
-                <div class="w-4 h-4 rounded-full bg-[#e3e2e0] flex items-center justify-center text-[6px] font-bold text-[#787774]">H</div>
-                <span class="text-[9px] text-[#787774]">Hampton Abbott</span>
-              </div>
-              <span class="text-[9px] text-[#787774]">Jan 2026</span>
-            </div>
-            <div class="text-xs font-semibold text-[#37352f] leading-snug">Reflecting on Data Science in Social Contexts</div>
-          </div>
-        </a>
-
-        <!-- Blog 2 -->
-        <a href="/2026/01/27/ethically-ambiguous-data-modeling.html" class="block bg-white border border-[#e3e2e0] rounded-lg overflow-hidden ch">
-          <div class="bg-[#edf0f5] p-4 h-28 flex items-center">
-            <div class="w-full flex items-center gap-3">
-              <svg width="52" height="52" viewBox="0 0 52 52" class="flex-shrink-0">
-                <circle cx="26" cy="26" r="20" fill="none" stroke="#e3e2e0" stroke-width="6"/>
-                <circle cx="26" cy="26" r="20" fill="none" stroke="#60a5fa" stroke-width="6"
-                  stroke-dasharray="90 36" stroke-dashoffset="28" stroke-linecap="round"/>
-              </svg>
-              <div class="flex-1 space-y-1.5">
-                <div class="h-1.5 bg-blue-200 rounded-full w-full"></div>
-                <div class="h-1.5 bg-gray-200 rounded-full w-3/4"></div>
-                <div class="h-1.5 bg-gray-200 rounded-full w-5/6"></div>
-              </div>
-            </div>
-          </div>
-          <div class="p-3 border-t border-[#e3e2e0]">
-            <div class="flex items-center justify-between mb-1">
-              <div class="flex items-center gap-1">
-                <div class="w-4 h-4 rounded-full bg-[#e3e2e0] flex items-center justify-center text-[6px] font-bold text-[#787774]">H</div>
-                <span class="text-[9px] text-[#787774]">Hampton Abbott</span>
-              </div>
-              <span class="text-[9px] text-[#787774]">Jan 2026</span>
-            </div>
-            <div class="text-xs font-semibold text-[#37352f] leading-snug">Ethically Ambiguous Data Modeling</div>
-          </div>
-        </a>
-
-        <!-- Blog 3 -->
-        <a href="/2026/02/14/opportunity-agency-and-health.html" class="block bg-white border border-[#e3e2e0] rounded-lg overflow-hidden ch">
-          <div class="bg-[#edf0f5] p-4 h-28 flex items-center justify-center">
-            <img src="https://placehold.co/280x80/e2e8f0/94a3b8?text=visualization" alt="" class="w-full h-full object-cover rounded" />
-          </div>
-          <div class="p-3 border-t border-[#e3e2e0]">
-            <div class="flex items-center justify-between mb-1">
-              <div class="flex items-center gap-1">
-                <div class="w-4 h-4 rounded-full bg-[#e3e2e0] flex items-center justify-center text-[6px] font-bold text-[#787774]">H</div>
-                <span class="text-[9px] text-[#787774]">Hampton Abbott</span>
-              </div>
-              <span class="text-[9px] text-[#787774]">Feb 2026</span>
-            </div>
-            <div class="text-xs font-semibold text-[#37352f] leading-snug">Opportunity, Agency, and Health</div>
-          </div>
-        </a>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- ─── FEATURED IN ─── -->
-  <div class="border-t border-[#e3e2e0]">
-    <div class="max-w-screen-xl mx-auto px-4 py-10">
-      <h2 class="text-xl font-bold text-[#37352f] mb-6">Featured in</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl">
-
-        <!-- UNCC -->
-        <div class="bg-white border border-[#e3e2e0] rounded-lg overflow-hidden flex ch">
-          <div class="bg-[#edf0f5] w-20 flex items-center justify-center flex-shrink-0 p-3">
-            <div class="text-center">
-              <div class="text-[10px] font-black text-[#37352f] leading-none">UNC</div>
-              <div class="text-[8px] text-[#787774]">Charlotte</div>
-            </div>
-          </div>
-          <div class="p-3 flex flex-col justify-center">
-            <div class="text-xs font-semibold text-[#37352f] mb-0.5">Data Science Foundations</div>
-            <div class="text-[10px] text-[#787774]">DTSC-2301 · UNC Charlotte</div>
-          </div>
-        </div>
-
-        <!-- IBM Data Science -->
-        <div class="bg-white border border-[#e3e2e0] rounded-lg overflow-hidden flex ch">
-          <div class="bg-[#edf0f5] w-20 flex items-center justify-center flex-shrink-0 p-3">
-            <div class="text-[11px] font-black text-blue-700">IBM</div>
-          </div>
-          <div class="p-3 flex flex-col justify-center">
-            <div class="text-xs font-semibold text-[#37352f] mb-0.5">IBM Data Science</div>
-            <div class="text-[10px] text-[#787774]">Certificate · 03/2025</div>
-          </div>
-        </div>
-
-        <!-- Python/Tools -->
-        <div class="bg-white border border-[#e3e2e0] rounded-lg overflow-hidden flex ch">
-          <div class="bg-[#edf0f5] w-20 flex items-center justify-center flex-shrink-0 p-3">
-            <div class="text-[10px] font-mono font-bold text-blue-600">py</div>
-          </div>
-          <div class="p-3 flex flex-col justify-center">
-            <div class="text-xs font-semibold text-[#37352f] mb-0.5">Tools &amp; Stack</div>
-            <div class="text-[10px] text-[#787774]">Python · SQL · pandas · NumPy</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- ─── BECOME A CREATOR (dark CTA) ─── -->
+  <!-- ─── DARK CTA (letter card) ─── -->
   <div class="border-t border-[#e3e2e0] bg-[#0d1b36]">
-    <div class="max-w-screen-xl mx-auto px-4 py-16">
+    <div class="max-w-5xl mx-auto px-5 py-16">
 
       <!-- CTA heading -->
       <div class="text-center mb-12">
@@ -582,7 +580,7 @@ layout: null
 
   <!-- ─── FOOTER ─── -->
   <footer class="bg-white border-t border-[#e3e2e0]">
-    <div class="max-w-screen-xl mx-auto px-4 py-12">
+    <div class="max-w-5xl mx-auto px-5 py-12">
       <div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-10">
 
         <!-- Logo + socials -->
@@ -604,7 +602,7 @@ layout: null
           </div>
         </div>
 
-        <!-- Company -->
+        <!-- Navigate -->
         <div>
           <h3 class="text-[10px] font-semibold text-[#37352f] uppercase tracking-wider mb-3">Navigate</h3>
           <ul class="space-y-2 text-sm text-[#787774]">
@@ -666,6 +664,22 @@ layout: null
 
     </div>
   </footer>
+
+  <!-- ─── TABS JS ─── -->
+  <script>
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tab = btn.dataset.tab;
+        // update buttons
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        // update panels
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        document.getElementById('tab-' + tab).classList.add('active');
+      });
+    });
+  </script>
 
 </body>
 </html>

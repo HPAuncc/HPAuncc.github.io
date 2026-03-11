@@ -14,8 +14,11 @@ layout: null
         extend: {
           fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
           colors: {
-            navy: '#0d1b36',
-            hero: '#edf0f5',
+            nd: '#37352f',
+            ng: '#787774',
+            nb: '#f6f6f5',
+            nl: '#f1f0ef',
+            nbr: '#e3e2e0',
           },
         },
       },
@@ -23,541 +26,658 @@ layout: null
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Inter', system-ui, sans-serif; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50%       { transform: translateY(-14px); }
-    }
-    @keyframes float2 {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50%       { transform: translateY(-10px) rotate(3deg); }
-    }
-    @keyframes float3 {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50%       { transform: translateY(-8px) rotate(-2deg); }
-    }
-    .float   { animation: float  6s ease-in-out infinite; }
-    .float2  { animation: float2 9s ease-in-out infinite; }
-    .float3  { animation: float3 8s ease-in-out infinite 1s; }
-    .float4  { animation: float  7s ease-in-out infinite 2s; }
-
-    .card-up { transition: transform .2s ease, box-shadow .2s ease; }
-    .card-up:hover { transform: translateY(-5px); box-shadow: 0 24px 48px rgba(0,0,0,.10); }
-
-    /* 3D object helpers */
-    .obj-shadow { box-shadow: 0 8px 24px rgba(0,0,0,.18), 0 2px 6px rgba(0,0,0,.10); }
-    .obj-shadow-sm { box-shadow: 0 4px 14px rgba(0,0,0,.14), 0 1px 4px rgba(0,0,0,.08); }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #f6f6f5; color: #37352f; }
+    .hl:hover { background: #f1f0ef; }
+    .ch { transition: box-shadow .15s ease, transform .15s ease; }
+    .ch:hover { box-shadow: 0 4px 20px rgba(0,0,0,.08); transform: translateY(-1px); }
+    .star { color: #f5c518; }
+    .sbar { background: #f5c518; height: 6px; border-radius: 3px; }
   </style>
 </head>
-<body class="bg-white text-gray-900 antialiased overflow-x-hidden">
+<body class="antialiased overflow-x-hidden">
 
   <!-- ─── NAV ─── -->
-  <nav class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100">
-    <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
-      <a href="/" class="font-black text-gray-900 tracking-tight text-sm">HP Abbott</a>
-      <div class="flex items-center gap-1 text-sm text-gray-500">
-        <a href="/" class="px-3 py-1 hover:text-gray-900 transition-colors">Home</a>
-        <span class="text-gray-200 select-none">|</span>
-        <a href="/blog" class="px-3 py-1 hover:text-gray-900 transition-colors">Blog</a>
-        <span class="text-gray-200 select-none">|</span>
-        <a href="/projects" class="px-3 py-1 hover:text-gray-900 transition-colors">Projects</a>
+  <nav class="fixed top-0 inset-x-0 z-50 bg-white border-b border-[#e3e2e0]">
+    <div class="max-w-screen-xl mx-auto px-4 h-12 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2 font-semibold text-sm text-[#37352f]">
+        <div class="w-6 h-6 bg-[#37352f] rounded-sm flex items-center justify-center text-white text-[11px] font-black select-none">H</div>
+        HP Abbott
+      </a>
+      <div class="hidden md:flex items-center gap-0.5 text-sm text-[#37352f]">
+        <a href="/" class="px-3 py-1 hl rounded transition-colors">Home</a>
+        <a href="/blog" class="px-3 py-1 hl rounded transition-colors">Blog</a>
+        <a href="/projects" class="px-3 py-1 hl rounded transition-colors">Projects</a>
+      </div>
+      <div class="flex items-center gap-2 text-sm">
+        <a href="/blog" class="px-3 py-1 text-[#37352f] hl rounded transition-colors hidden sm:block">Log in</a>
         <a href="https://github.com/HPAuncc" target="_blank" rel="noopener"
-           class="ml-4 bg-gray-900 text-white text-xs font-semibold px-4 py-1.5 rounded-full hover:bg-gray-700 transition-colors">
+           class="bg-black text-white text-xs font-medium px-3 py-1.5 rounded hover:bg-gray-800 transition-colors">
           Sign up for free
         </a>
       </div>
     </div>
   </nav>
 
-  <!-- ─── HERO ─── -->
-  <section class="relative bg-[#edf0f5] overflow-hidden pt-28 pb-28 flex items-center min-h-screen">
-
-    <!-- Left floating 3D objects -->
-    <!-- Coin/purse object -->
-    <div class="float absolute left-10 top-36 pointer-events-none hidden sm:block">
-      <div class="obj-shadow w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-xl rotate-[-12deg]">
-        💰
-      </div>
-    </div>
-    <!-- Small yellow circle -->
-    <div class="float2 absolute left-24 top-56 w-6 h-6 bg-yellow-300 rounded-full obj-shadow-sm opacity-90"></div>
-    <!-- Blue sphere -->
-    <div class="float absolute left-8 bottom-40 pointer-events-none hidden sm:block">
-      <div class="obj-shadow w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-lg">
-        🔵
-      </div>
-    </div>
-    <!-- Paperclip -->
-    <div class="float3 absolute left-32 bottom-56 pointer-events-none hidden md:block">
-      <div class="obj-shadow w-9 h-9 rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center text-base rotate-[20deg]">
-        📎
+  <!-- ─── MARKETPLACE BREADCRUMB ─── -->
+  <div class="pt-12">
+    <div class="border-b border-[#e3e2e0] bg-white">
+      <div class="max-w-screen-xl mx-auto px-4 py-1.5 text-xs text-[#787774]">
+        <a href="/projects" class="hover:underline">← Marketplace</a>
       </div>
     </div>
 
-    <!-- Right floating 3D objects -->
-    <!-- Teal/blue circle -->
-    <div class="float  absolute right-12 top-32 w-9 h-9 bg-gradient-to-br from-teal-300 to-teal-500 rounded-full obj-shadow opacity-90"></div>
-    <!-- Big blue sphere -->
-    <div class="float2 absolute right-24 top-52 pointer-events-none hidden sm:block">
-      <div class="w-14 h-14 rounded-full bg-gradient-to-br from-blue-400 to-blue-700 obj-shadow flex items-center justify-center">
-        <div class="w-4 h-4 rounded-full bg-white/40 -translate-x-2 -translate-y-2"></div>
-      </div>
-    </div>
-    <!-- Red sphere -->
-    <div class="float3 absolute right-8 bottom-44 w-8 h-8 bg-gradient-to-br from-red-400 to-red-600 rounded-full obj-shadow opacity-80"></div>
-    <!-- Card/stack object -->
-    <div class="float4 absolute right-20 bottom-32 pointer-events-none hidden md:block">
-      <div class="obj-shadow w-10 h-10 rounded-xl bg-gradient-to-br from-purple-400 to-indigo-600 flex items-center justify-center text-base rotate-[15deg]">
-        💳
-      </div>
-    </div>
+    <!-- ─── MAIN CONTENT ─── -->
+    <div class="max-w-screen-xl mx-auto px-4 py-8">
 
-    <!-- Center content -->
-    <div class="relative max-w-5xl mx-auto px-6 text-center w-full">
-
-      <!-- Floating mini-card above heading -->
-      <div class="float inline-block mb-10">
-        <div class="bg-white rounded-2xl shadow-lg px-5 py-3 text-left inline-flex items-center gap-3">
-          <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white text-xs font-bold shadow">HFA</div>
-          <div>
-            <div class="text-xs font-semibold text-gray-800 leading-none mb-0.5">Home-Field Advantage</div>
-            <div class="text-[10px] text-gray-400 font-medium">NFL · 2000–2023 · 6,175 games</div>
-          </div>
-          <div class="ml-2 text-xs font-bold text-blue-600">56.26%</div>
-        </div>
-      </div>
-
-      <!-- Heading -->
-      <h1 class="text-5xl md:text-6xl lg:text-[72px] font-black text-gray-900 leading-[1.05] tracking-tighter mb-6">
-        Data that drives<br />better decisions
-      </h1>
-
-      <!-- Subtitle -->
-      <p class="text-base md:text-lg text-gray-500 max-w-sm mx-auto mb-10 leading-relaxed">
-        A portfolio at the intersection of sports analytics and data science.
-      </p>
-
-      <!-- CTA buttons -->
-      <div class="flex flex-col sm:flex-row gap-3 justify-center mb-16">
-        <a href="/projects"
-           class="bg-gray-900 text-white font-semibold text-sm px-8 py-3 rounded-full hover:bg-gray-700 transition-colors">
-          View projects &amp; analysis
-        </a>
-        <a href="/blog"
-           class="bg-white text-gray-700 font-semibold text-sm px-8 py-3 rounded-full border border-gray-200 hover:border-gray-400 transition-colors">
-          Read the blog
-        </a>
-      </div>
-
-      <!-- Trust strip -->
-      <p class="text-xs text-gray-400 font-medium uppercase tracking-[.18em] mb-5">
-        Tools &amp; Technologies
-      </p>
-      <div class="flex items-center justify-center gap-5 flex-wrap">
-        <span class="text-sm font-bold text-gray-300 hover:text-gray-400 transition-colors">Python</span>
-        <span class="text-gray-200">·</span>
-        <span class="text-sm font-bold text-gray-300 hover:text-gray-400 transition-colors">pandas</span>
-        <span class="text-gray-200">·</span>
-        <span class="text-sm font-bold text-gray-300 hover:text-gray-400 transition-colors">matplotlib</span>
-        <span class="text-gray-200">·</span>
-        <span class="text-sm font-bold text-gray-300 hover:text-gray-400 transition-colors">seaborn</span>
-        <span class="text-gray-200">·</span>
-        <span class="text-sm font-bold text-gray-300 hover:text-gray-400 transition-colors">nflverse</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── ABOUT (value-prop) ─── -->
-  <section class="relative bg-white py-28 overflow-hidden">
-    <!-- Floating spheres -->
-    <div class="float  absolute left-0 top-1/2 -translate-y-1/2 w-24 h-24 bg-blue-500 rounded-full opacity-15 -translate-x-8"></div>
-    <div class="float2 absolute right-0 top-1/3 w-16 h-16 bg-red-400 rounded-full opacity-15 translate-x-6"></div>
-
-    <div class="max-w-3xl mx-auto px-6 text-center">
-      <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-[1.05] tracking-tighter mb-8">
-        Where sports analytics<br />meets data ethics<br />in any context you want
-      </h2>
-      <p class="text-base md:text-lg text-gray-500 leading-relaxed max-w-2xl mx-auto mb-10">
-        I am a Sports Analytics major at UNC Charlotte with a deep-rooted passion for the statistics that drive the games
-        we love. While my technical focus is on optimizing performance and strategy in sports, I am equally driven by a
-        passion for digital privacy. I believe that as we collect more data—on the field and off—we have a growing
-        responsibility to handle that information ethically. My goal this semester is to merge these interests, exploring
-        how high-level analytics can coexist with robust data privacy standards.
-      </p>
-      <a href="/projects"
-         class="bg-gray-900 text-white font-semibold text-sm px-8 py-3 rounded-full hover:bg-gray-700 transition-colors inline-block">
-        See my work
-      </a>
-    </div>
-  </section>
-
-  <!-- ─── PROJECTS (invoice-style cards) ─── -->
-  <section class="relative bg-[#edf0f5] py-28 overflow-hidden">
-    <!-- Floating red sphere (right side) -->
-    <div class="float absolute right-6 top-20 w-16 h-16 bg-gradient-to-br from-red-400 to-red-600 rounded-full opacity-50 obj-shadow"></div>
-
-    <div class="max-w-5xl mx-auto px-6">
-      <!-- FROM / TO row label -->
-      <div class="grid grid-cols-2 gap-6 mb-3 px-1">
-        <div class="text-xs font-semibold text-gray-400 uppercase tracking-widest">Course</div>
-        <div class="text-xs font-semibold text-gray-400 uppercase tracking-widest">To</div>
-      </div>
-
-      <!-- Cards row — overflow visible so 3rd card bleeds right -->
-      <div class="relative">
-        <div class="grid md:grid-cols-2 gap-6">
-
-          <!-- Card 1: COURSE (FROM) -->
-          <div class="bg-white rounded-2xl p-6 shadow-sm card-up">
-            <div class="flex items-center gap-3 mb-5">
-              <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-md">
-                <!-- marble-like blue sphere -->
-                <div class="w-5 h-5 rounded-full bg-white/30 relative">
-                  <div class="absolute top-0.5 left-0.5 w-2 h-2 rounded-full bg-white/60"></div>
-                </div>
-              </div>
-              <div>
-                <div class="text-sm font-bold text-gray-900">DTSC-2301</div>
-                <div class="text-xs text-gray-400 mt-0.5">dtsc2301@uncc.edu</div>
-              </div>
-            </div>
-            <div class="text-xs text-gray-500 space-y-1 leading-relaxed">
-              <div>Data Science Foundations</div>
-              <div>University of North Carolina Charlotte</div>
-              <div>Charlotte, NC</div>
-            </div>
-          </div>
-
-          <!-- Card 2: PROJECT (TO) -->
-          <a href="/projects/home-field-advantage"
-             class="block bg-white rounded-2xl p-6 shadow-sm card-up">
-            <div class="flex items-center gap-3 mb-5">
-              <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-md">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <circle cx="9" cy="9" r="8" stroke="white" stroke-width="2"/>
-                  <line x1="9" y1="4" x2="9" y2="14" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                  <line x1="4" y1="9" x2="14" y2="9" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <div>
-                <div class="text-sm font-bold text-gray-900">Home-Field Advantage</div>
-                <div class="text-xs text-gray-400 mt-0.5">hfa@nflverse.project</div>
-              </div>
-            </div>
-            <div class="text-xs text-gray-500 space-y-1 leading-relaxed">
-              <div>NFL Regular Season Analysis</div>
-              <div>2000–2023 · 6,175 Games</div>
-              <div>Python, pandas, matplotlib, seaborn</div>
-            </div>
-          </a>
-
-        </div>
-
-        <!-- Partially visible 3rd card bleeding off the right edge -->
-        <div class="hidden lg:block absolute -right-20 top-0 w-52 bg-white rounded-2xl p-6 shadow-sm opacity-70 pointer-events-none" style="clip-path: inset(0 0 0 0 round 1rem);">
-          <div class="flex items-center gap-3 mb-5">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center shadow-md">
-              <div class="w-5 h-5 rounded-full bg-white/30 relative">
-                <div class="absolute top-0.5 left-0.5 w-2 h-2 rounded-full bg-white/60"></div>
-              </div>
-            </div>
-            <div>
-              <div class="text-sm font-bold text-gray-900">Analytics</div>
-              <div class="text-xs text-gray-400 mt-0.5">portfolio</div>
-            </div>
-          </div>
-          <div class="text-xs text-gray-500 space-y-1">
-            <div>Data Science</div>
-            <div>UNCC · 2026</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── QUOTE / FINDING ─── -->
-  <section class="bg-[#edf0f5] py-16 border-t border-gray-200">
-    <div class="max-w-3xl mx-auto px-6">
-      <p class="text-base md:text-lg text-gray-600 leading-relaxed mb-6">
-        "Across 6,175 regular-season games from 2000–2023, home teams won <strong>56.26%</strong> of the time. The
-        advantage is real — but it appears weaker than it was in the early 2000s, and 2020 stands out as the most
-        extreme outlier (49.80%). Data can describe these patterns, but we should be careful about claiming a
-        single cause."
-      </p>
-      <div class="flex items-center gap-3">
-        <div class="w-9 h-9 bg-gray-300 rounded-full overflow-hidden ring-2 ring-white shadow-sm">
-          <img src="/assets/images/adjusted_banner_left.jpg" alt="" class="w-full h-full object-cover object-top" />
-        </div>
+      <!-- Title + creator + actions -->
+      <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-8">
         <div>
-          <div class="text-sm font-semibold text-gray-800">Hampton P. Abbott</div>
-          <div class="text-xs text-gray-400">Sports Analytics Major, UNC Charlotte</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── KEY FINDINGS (pricing-style card) ─── -->
-  <section class="bg-white py-28">
-    <div class="max-w-5xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
-
-      <!-- Left: heading -->
-      <div class="flex-1 text-center lg:text-left">
-        <p class="text-xs text-gray-400 font-semibold uppercase tracking-widest mb-4">Key Findings</p>
-        <h2 class="text-3xl md:text-4xl font-black text-gray-900 tracking-tighter leading-tight mb-4">
-          Home-field<br />advantage is real
-        </h2>
-        <p class="text-sm text-gray-500 leading-relaxed max-w-xs">
-          But it's changing — and the data from 2020 tells a striking story.
-        </p>
-      </div>
-
-      <!-- Right: findings card -->
-      <div class="flex-1 w-full max-w-sm">
-        <div class="bg-white border border-gray-100 rounded-2xl shadow-md overflow-hidden">
-          <div class="px-6 pt-6 pb-4 border-b border-gray-100">
-            <div class="text-3xl font-black text-gray-900 mb-0.5">56.26%</div>
-            <div class="text-xs text-gray-400 font-medium mb-4">home win rate (2000–2023)</div>
-            <a href="/projects/home-field-advantage"
-               class="block bg-gray-900 text-white text-center text-sm font-semibold py-2.5 rounded-full hover:bg-gray-700 transition-colors">
-              Read analysis
-            </a>
+          <h1 class="text-2xl md:text-[28px] font-bold text-[#37352f] leading-tight mb-2">Portfolio [Data Analyst]</h1>
+          <div class="flex items-center gap-2">
+            <img src="https://placehold.co/20x20/37352f/ffffff?text=H" alt="Hampton Abbott" class="w-5 h-5 rounded-full" />
+            <span class="text-sm text-[#787774]">by Hampton Abbott</span>
           </div>
-          <ul class="px-6 py-5 space-y-3 text-sm text-gray-600">
-            <li class="flex items-center gap-2.5">
-              <span class="w-1.5 h-1.5 bg-blue-500 rounded-full flex-shrink-0"></span>
-              6,175 regular-season games analyzed
-            </li>
-            <li class="flex items-center gap-2.5">
-              <span class="w-1.5 h-1.5 bg-blue-500 rounded-full flex-shrink-0"></span>
-              24 seasons covered (2000–2023)
-            </li>
-            <li class="flex items-center gap-2.5">
-              <span class="w-1.5 h-1.5 bg-blue-500 rounded-full flex-shrink-0"></span>
-              Flexible trend analysis with rolling avg
-            </li>
-            <li class="flex items-center gap-2.5">
-              <span class="w-1.5 h-1.5 bg-blue-500 rounded-full flex-shrink-0"></span>
-              Automated via Python + nflverse data
-            </li>
-          </ul>
+        </div>
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <a href="/projects"
+             class="text-sm border border-[#e3e2e0] bg-white px-4 py-1.5 rounded text-[#37352f] hl transition-colors">
+            View projects
+          </a>
+          <a href="https://github.com/HPAuncc" target="_blank" rel="noopener"
+             class="text-sm bg-black text-white px-4 py-1.5 rounded hover:bg-gray-800 transition-colors">
+            Get template
+          </a>
         </div>
       </div>
 
-    </div>
-  </section>
+      <!-- ─── 2-COLUMN GRID ─── -->
+      <div class="grid lg:grid-cols-[1fr_340px] gap-8 items-start">
 
-  <!-- ─── BLOG (3-column card grid) ─── -->
-  <section class="bg-white py-28 border-t border-gray-100">
-    <div class="max-w-5xl mx-auto px-6">
-      <p class="text-xs text-gray-400 font-semibold uppercase tracking-widest mb-4">Blog</p>
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 tracking-tighter leading-tight mb-3">
-        What makes for the<br />world's most thoughtful<br />data work?
-      </h2>
-      <p class="text-sm text-gray-400 mb-12">Built to get insights faster</p>
+        <!-- LEFT: Portfolio preview mockup -->
+        <div class="bg-white border border-[#e3e2e0] rounded-lg overflow-hidden">
 
-      <!-- 3-column blog cards -->
-      <div class="grid md:grid-cols-3 gap-5">
-
-        <!-- Card 1 (active/featured) -->
-        <a href="/2026/01/16/reflecting-on-data-science.html"
-           class="block bg-[#edf0f5] rounded-2xl overflow-hidden border-2 border-blue-500 card-up group">
-          <!-- Screenshot preview mockup -->
-          <div class="p-4 pb-0">
-            <div class="bg-white rounded-xl p-4 shadow-sm">
-              <!-- Browser chrome -->
-              <div class="flex items-center gap-1 mb-3">
-                <div class="w-2 h-2 rounded-full bg-red-300"></div>
-                <div class="w-2 h-2 rounded-full bg-yellow-300"></div>
-                <div class="w-2 h-2 rounded-full bg-green-300"></div>
-                <div class="flex-1 ml-2 h-2 bg-gray-100 rounded-full"></div>
-              </div>
-              <!-- Fake content lines -->
-              <div class="space-y-1.5">
-                <div class="w-3/4 h-2 bg-blue-100 rounded-full"></div>
-                <div class="w-full h-1.5 bg-gray-100 rounded-full"></div>
-                <div class="w-5/6 h-1.5 bg-gray-100 rounded-full"></div>
-                <div class="w-4/5 h-1.5 bg-gray-100 rounded-full"></div>
-                <div class="w-2/3 h-1.5 bg-gray-100 rounded-full mt-2"></div>
-              </div>
-              <!-- Fake chart bar -->
-              <div class="flex items-end gap-1 mt-3 h-8">
-                <div class="flex-1 bg-blue-200 rounded-t" style="height:60%"></div>
-                <div class="flex-1 bg-blue-400 rounded-t" style="height:90%"></div>
-                <div class="flex-1 bg-blue-200 rounded-t" style="height:70%"></div>
-                <div class="flex-1 bg-blue-300 rounded-t" style="height:80%"></div>
-                <div class="flex-1 bg-blue-200 rounded-t" style="height:55%"></div>
-                <div class="flex-1 bg-blue-400 rounded-t" style="height:100%"></div>
-              </div>
+          <!-- Hero preview area -->
+          <div class="bg-[#edf0f5] px-8 pt-8 pb-6">
+            <!-- Mini nav bar -->
+            <div class="flex items-center justify-between mb-8 bg-white rounded-md px-3 py-1.5 shadow-sm">
+              <span class="text-[9px] font-bold text-[#37352f]">HP Abbott</span>
+              <div class="flex gap-3 text-[9px] text-[#787774]"><span>Home</span><span>Blog</span><span>Projects</span></div>
+              <span class="text-[8px] bg-[#37352f] text-white px-2 py-0.5 rounded">Sign up</span>
             </div>
-          </div>
-          <div class="p-4 pt-3">
-            <div class="text-[10px] text-blue-500 font-semibold uppercase tracking-widest mb-1">Jan 16, 2026</div>
-            <div class="text-sm font-bold text-gray-900 leading-snug group-hover:text-blue-700 transition-colors">Reflecting on Data Science in Social Contexts</div>
-          </div>
-        </a>
-
-        <!-- Card 2 -->
-        <a href="/2026/01/27/ethically-ambiguous-data-modeling.html"
-           class="block bg-white rounded-2xl overflow-hidden border border-gray-150 shadow-sm card-up group">
-          <div class="p-4 pb-0">
-            <div class="bg-[#edf0f5] rounded-xl p-4">
-              <div class="flex items-center gap-1 mb-3">
-                <div class="w-2 h-2 rounded-full bg-gray-200"></div>
-                <div class="w-2 h-2 rounded-full bg-gray-200"></div>
-                <div class="w-2 h-2 rounded-full bg-gray-200"></div>
-                <div class="flex-1 ml-2 h-2 bg-gray-200 rounded-full"></div>
-              </div>
-              <div class="space-y-1.5">
-                <div class="w-2/3 h-2 bg-gray-300 rounded-full"></div>
-                <div class="w-full h-1.5 bg-gray-200 rounded-full"></div>
-                <div class="w-4/5 h-1.5 bg-gray-200 rounded-full"></div>
-                <div class="w-3/4 h-1.5 bg-gray-200 rounded-full"></div>
-              </div>
-              <!-- Fake donut chart (SVG) -->
-              <div class="mt-3 flex items-center gap-3">
-                <svg width="44" height="44" viewBox="0 0 44 44" class="flex-shrink-0">
-                  <circle cx="22" cy="22" r="16" fill="none" stroke="#e2e8f0" stroke-width="5"/>
-                  <circle cx="22" cy="22" r="16" fill="none" stroke="#60a5fa" stroke-width="5"
-                    stroke-dasharray="75 26" stroke-dashoffset="25" stroke-linecap="round"/>
-                </svg>
-                <div class="space-y-1.5 flex-1">
-                  <div class="flex items-center gap-1.5">
-                    <div class="w-2 h-2 rounded-sm bg-blue-400 flex-shrink-0"></div>
-                    <div class="h-1.5 w-full bg-gray-200 rounded-full"></div>
-                  </div>
-                  <div class="flex items-center gap-1.5">
-                    <div class="w-2 h-2 rounded-sm bg-gray-200 flex-shrink-0"></div>
-                    <div class="h-1.5 w-3/4 bg-gray-200 rounded-full"></div>
-                  </div>
+            <!-- Mini HFA floating card -->
+            <div class="flex justify-center mb-4">
+              <div class="inline-flex items-center gap-2 bg-white rounded-xl shadow-md px-3 py-2">
+                <div class="w-6 h-6 bg-blue-600 rounded flex items-center justify-center text-white text-[8px] font-bold shadow">HFA</div>
+                <div>
+                  <div class="text-[9px] font-semibold text-[#37352f] leading-none mb-0.5">Home-Field Advantage</div>
+                  <div class="text-[7px] text-[#787774]">NFL · 2000–2023 · 6,175 games</div>
                 </div>
+                <span class="text-[9px] font-bold text-blue-600 ml-1">56.26%</span>
+              </div>
+            </div>
+            <!-- Heading -->
+            <div class="text-center mb-4">
+              <h2 class="text-base md:text-lg font-black text-[#37352f] leading-tight mb-1">Data that drives<br />better decisions</h2>
+              <p class="text-[9px] text-[#787774] mb-3 leading-relaxed">A portfolio at the intersection of sports<br />analytics and data science.</p>
+              <div class="flex justify-center gap-2">
+                <span class="text-[8px] bg-[#37352f] text-white px-3 py-1 rounded-full">View projects &amp; analysis</span>
+                <span class="text-[8px] border border-[#e3e2e0] bg-white text-[#37352f] px-3 py-1 rounded-full">Read the blog</span>
+              </div>
+            </div>
+            <!-- Tools strip -->
+            <div class="text-center mt-4">
+              <div class="text-[7px] text-[#787774] uppercase tracking-widest mb-1">Tools &amp; Technologies</div>
+              <div class="flex justify-center gap-2 flex-wrap text-[8px] font-semibold text-[#e3e2e0]">
+                <span>Python</span><span>·</span><span>pandas</span><span>·</span><span>matplotlib</span><span>·</span><span>seaborn</span><span>·</span><span>nflverse</span>
               </div>
             </div>
           </div>
-          <div class="p-4 pt-3">
-            <div class="text-[10px] text-gray-400 font-semibold uppercase tracking-widest mb-1">Jan 27, 2026</div>
-            <div class="text-sm font-semibold text-gray-600 leading-snug group-hover:text-gray-900 transition-colors">Ethically Ambiguous Data Modeling: Navigating the Gray Areas</div>
-          </div>
-        </a>
 
-        <!-- Card 3 -->
-        <a href="/2026/02/14/opportunity-agency-and-health.html"
-           class="block bg-white rounded-2xl overflow-hidden border border-gray-150 shadow-sm card-up group">
-          <div class="p-4 pb-0">
-            <div class="bg-[#edf0f5] rounded-xl p-4">
-              <div class="flex items-center gap-1 mb-3">
-                <div class="w-2 h-2 rounded-full bg-gray-200"></div>
-                <div class="w-2 h-2 rounded-full bg-gray-200"></div>
-                <div class="w-2 h-2 rounded-full bg-gray-200"></div>
-                <div class="flex-1 ml-2 h-2 bg-gray-200 rounded-full"></div>
+          <!-- Sub-previews row -->
+          <div class="border-t border-[#e3e2e0] bg-white px-4 py-4 flex gap-4 overflow-x-auto">
+            <!-- HFA project preview -->
+            <div class="flex-shrink-0 bg-[#edf0f5] rounded-lg p-3 w-44">
+              <div class="text-[8px] font-semibold text-[#37352f] mb-2">Home-Field Advantage</div>
+              <div class="space-y-1 mb-2">
+                <div class="h-1 bg-blue-200 rounded-full w-full"></div>
+                <div class="h-1 bg-gray-200 rounded-full w-3/4"></div>
+                <div class="h-1 bg-gray-200 rounded-full w-5/6"></div>
               </div>
+              <div class="flex items-end gap-0.5 h-8">
+                <div class="flex-1 bg-blue-200 rounded-t" style="height:55%"></div>
+                <div class="flex-1 bg-blue-500 rounded-t" style="height:90%"></div>
+                <div class="flex-1 bg-blue-300 rounded-t" style="height:65%"></div>
+                <div class="flex-1 bg-blue-400 rounded-t" style="height:80%"></div>
+                <div class="flex-1 bg-blue-200 rounded-t" style="height:50%"></div>
+                <div class="flex-1 bg-blue-500 rounded-t" style="height:100%"></div>
+              </div>
+            </div>
+            <!-- Key findings preview -->
+            <div class="flex-shrink-0 bg-[#edf0f5] rounded-lg p-3 w-44">
+              <div class="text-[8px] font-semibold text-[#37352f] mb-1">Key Findings</div>
+              <div class="text-base font-black text-[#37352f] leading-none">56.26%</div>
+              <div class="text-[7px] text-[#787774] mb-2">home win rate (2000–2023)</div>
+              <div class="space-y-1">
+                <div class="flex items-center gap-1"><div class="w-1 h-1 rounded-full bg-blue-500 flex-shrink-0"></div><div class="h-1 bg-gray-200 rounded flex-1"></div></div>
+                <div class="flex items-center gap-1"><div class="w-1 h-1 rounded-full bg-blue-500 flex-shrink-0"></div><div class="h-1 bg-gray-200 rounded w-3/4"></div></div>
+                <div class="flex items-center gap-1"><div class="w-1 h-1 rounded-full bg-blue-500 flex-shrink-0"></div><div class="h-1 bg-gray-200 rounded w-5/6"></div></div>
+              </div>
+            </div>
+            <!-- Blog preview -->
+            <div class="flex-shrink-0 bg-[#edf0f5] rounded-lg p-3 w-44">
+              <div class="text-[8px] font-semibold text-[#37352f] mb-2">Blog</div>
               <div class="space-y-1.5">
-                <div class="w-3/5 h-2 bg-gray-300 rounded-full"></div>
-                <div class="w-full h-1.5 bg-gray-200 rounded-full"></div>
-                <div class="w-5/6 h-1.5 bg-gray-200 rounded-full"></div>
-                <div class="w-4/5 h-1.5 bg-gray-200 rounded-full"></div>
-              </div>
-              <!-- Map placeholder -->
-              <div class="mt-3 rounded-lg overflow-hidden bg-gray-100 h-12 flex items-center justify-center">
-                <img src="https://placehold.co/200x48/e2e8f0/94a3b8?text=visualization" alt="" class="w-full h-full object-cover" />
+                <div class="h-1 bg-blue-200 rounded-full w-full"></div>
+                <div class="h-1 bg-gray-200 rounded-full w-5/6"></div>
+                <div class="h-1 bg-gray-200 rounded-full w-4/5"></div>
+                <div class="h-1 bg-gray-200 rounded-full w-3/4"></div>
+                <div class="h-1 bg-blue-100 rounded-full w-full mt-1"></div>
+                <div class="h-1 bg-gray-200 rounded-full w-5/6"></div>
               </div>
             </div>
           </div>
-          <div class="p-4 pt-3">
-            <div class="text-[10px] text-gray-400 font-semibold uppercase tracking-widest mb-1">Feb 14, 2026</div>
-            <div class="text-sm font-semibold text-gray-600 leading-snug group-hover:text-gray-900 transition-colors">Opportunity, Agency, and Health: Where Structure Meets Choice</div>
+        </div>
+
+        <!-- RIGHT: About panel -->
+        <div class="space-y-5">
+          <div class="bg-white border border-[#e3e2e0] rounded-lg p-6">
+            <h2 class="text-sm font-semibold text-[#37352f] mb-3">About this template</h2>
+
+            <p class="text-sm text-[#787774] leading-relaxed mb-4">
+              Unearth the essence of your professional story with this versatile data analytics portfolio,
+              tailor-made for ambitious analysts and sports scientists. A narrative-driven canvas — free and
+              adaptable — ready to broadcast your skills to the world.
+            </p>
+
+            <p class="text-sm font-semibold text-[#37352f] mb-2">Features at a Glance:</p>
+            <ul class="space-y-2 text-sm text-[#787774] mb-5 leading-relaxed">
+              <li><span class="font-medium text-[#37352f]">Home-Field Advantage Study.</span> NFL analysis of 6,175 games (2000–2023), uncovering a 56.26% home win rate.</li>
+              <li><span class="font-medium text-[#37352f]">Data Ethics Writing.</span> Blog exploring how high-level analytics can coexist with robust data privacy standards.</li>
+              <li><span class="font-medium text-[#37352f]">Interactive Visualizations.</span> Charts and trend lines built with Python, pandas, matplotlib, and seaborn.</li>
+              <li><span class="font-medium text-[#37352f]">IBM Certified.</span> IBM Data Science &amp; Applied Data Science certifications (2025).</li>
+              <li><span class="font-medium text-[#37352f]">Professionally Linked.</span> GitHub and LinkedIn profiles available for deeper exploration.</li>
+            </ul>
+
+            <p class="text-sm text-[#787774] leading-relaxed mb-5">
+              I am a Sports Analytics major at UNC Charlotte with a deep-rooted passion for the statistics that drive the games
+              we love. While my technical focus is on optimizing performance and strategy in sports, I am equally driven by a
+              passion for digital privacy. I believe that as we collect more data—on the field and off—we have a growing
+              responsibility to handle that information ethically. My goal this semester is to merge these interests, exploring
+              how high-level analytics can coexist with robust data privacy standards.
+            </p>
+
+            <!-- Categories -->
+            <p class="text-[10px] font-semibold text-[#37352f] uppercase tracking-wider mb-2">Categories</p>
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              <span class="text-[11px] bg-[#f1f0ef] text-[#787774] px-2.5 py-1 rounded">📊 Portfolio</span>
+              <span class="text-[11px] bg-[#f1f0ef] text-[#787774] px-2.5 py-1 rounded">📄 Resume</span>
+              <span class="text-[11px] bg-[#f1f0ef] text-[#787774] px-2.5 py-1 rounded">🏈 Sports Analytics</span>
+              <span class="text-[11px] bg-[#f1f0ef] text-[#787774] px-2.5 py-1 rounded">💼 Work</span>
+            </div>
+
+            <!-- Contact the creator -->
+            <p class="text-[10px] font-semibold text-[#37352f] uppercase tracking-wider mb-2">Contact the creator</p>
+            <div class="space-y-1.5 text-sm text-[#787774] mb-4">
+              <div class="flex items-center gap-2">
+                <svg class="w-3.5 h-3.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+                <a href="mailto:abbott.hampton@gmail.com" class="hover:underline">abbott.hampton@gmail.com</a>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg class="w-3.5 h-3.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                <a href="https://github.com/HPAuncc" target="_blank" rel="noopener" class="hover:underline">github.com/HPAuncc</a>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg class="w-3.5 h-3.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <a href="https://www.linkedin.com/in/hamptonabbott" target="_blank" rel="noopener" class="hover:underline">linkedin.com/in/hamptonabbott</a>
+              </div>
+            </div>
+
+            <!-- Social icons + last edited -->
+            <div class="flex items-center gap-3 text-[#787774]">
+              <a href="https://github.com/HPAuncc" target="_blank" rel="noopener" aria-label="GitHub" class="hover:text-[#37352f] transition-colors">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/in/hamptonabbott" target="_blank" rel="noopener" aria-label="LinkedIn" class="hover:text-[#37352f] transition-colors">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </a>
+              <span class="text-[10px]">Last edited Mar 11, 2026</span>
+            </div>
           </div>
-        </a>
 
-      </div>
-
-      <!-- Navigation dots -->
-      <div class="flex items-center justify-center gap-2 mt-8">
-        <div class="w-5 h-1.5 bg-blue-500 rounded-full"></div>
-        <div class="w-1.5 h-1.5 bg-gray-200 rounded-full"></div>
-        <div class="w-1.5 h-1.5 bg-gray-200 rounded-full"></div>
-      </div>
-
-      <div class="mt-8 text-center">
-        <a href="/blog"
-           class="bg-gray-900 text-white font-semibold text-sm px-8 py-3 rounded-full hover:bg-gray-700 transition-colors inline-block">
-          All posts
-        </a>
+          <!-- Terms note -->
+          <p class="text-[11px] text-[#787774] text-center">
+            By using this portfolio you agree to our
+            <a href="#" class="underline hover:text-[#37352f]">Terms and Conditions</a>
+          </p>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ─── CTA DARK SECTION ─── -->
-  <section class="bg-[#0d1b36] py-28 relative overflow-hidden">
+  <!-- ─── RATINGS & REVIEWS ─── -->
+  <div class="border-t border-[#e3e2e0]">
+    <div class="max-w-screen-xl mx-auto px-4 py-10">
+      <h2 class="text-xl font-bold text-[#37352f] mb-6">Ratings &amp; Reviews</h2>
+      <div class="flex flex-col md:flex-row gap-10 md:gap-16">
 
-    <!-- Floating decorations -->
-    <div class="float  absolute top-16   right-24  w-10 h-10 bg-blue-500  rounded-full opacity-25"></div>
-    <div class="float2 absolute bottom-24 left-16  w-8  h-8  bg-teal-400  rounded-full opacity-20"></div>
-    <div class="float3 absolute top-1/2  left-8   w-6  h-6  bg-green-400 rounded-full opacity-15"></div>
-
-    <div class="max-w-5xl mx-auto px-6 flex flex-col items-center">
-      <div class="relative w-full max-w-2xl">
-
-        <!-- Letter card -->
-        <div class="bg-white rounded-2xl p-8 md:p-10 shadow-2xl relative z-10">
-          <!-- Greeting -->
-          <div class="flex items-center gap-2 mb-6">
-            <span class="text-xs text-gray-400 font-semibold uppercase tracking-widest">Dear business owner,</span>
-            <span class="text-gray-300 text-xs">✉</span>
-          </div>
-          <p class="text-sm text-gray-600 leading-relaxed mb-4">
-            Running a sports analytics portfolio isn't for the faint of heart. Especially when you want to do it right.
-            It can be hard to get clean data. You need good questions. Specifically demand careful, reproducible analysis.
-          </p>
-          <p class="text-sm text-gray-600 leading-relaxed mb-4">
-            We sometimes forget that. They take a long time. Require care.
-          </p>
-          <p class="text-sm text-gray-500 leading-relaxed mb-8">
-            That's why I did it in the right way.
-          </p>
-          <p class="text-sm text-gray-500 mb-8">Love, only me.</p>
-          <div class="text-sm font-semibold text-gray-800" style="font-style: italic;">Hampton Abbott</div>
-
-          <!-- Sticky note -->
-          <div class="absolute -top-5 right-6 bg-yellow-300 text-yellow-900 text-[10px] font-bold p-3 rounded shadow-lg rotate-3 w-24 text-center leading-tight z-20">
-            Sports<br />Analytics<br />@ UNCC
+        <!-- Overall score -->
+        <div class="flex-shrink-0">
+          <div class="text-5xl font-black text-[#37352f] leading-none mb-1">4.9</div>
+          <div class="flex gap-0.5 mb-1"><span class="star text-lg">★</span><span class="star text-lg">★</span><span class="star text-lg">★</span><span class="star text-lg">★</span><span class="star text-lg">★</span></div>
+          <div class="text-xs text-[#787774]">Based on 200+ readings</div>
+          <div class="mt-3 space-y-1.5 w-36">
+            <div class="flex items-center gap-2"><span class="text-xs text-[#787774] w-3">5</span><div class="flex-1 bg-[#e3e2e0] rounded h-1.5 overflow-hidden"><div class="sbar" style="width:82%"></div></div></div>
+            <div class="flex items-center gap-2"><span class="text-xs text-[#787774] w-3">4</span><div class="flex-1 bg-[#e3e2e0] rounded h-1.5 overflow-hidden"><div class="sbar" style="width:14%"></div></div></div>
+            <div class="flex items-center gap-2"><span class="text-xs text-[#787774] w-3">3</span><div class="flex-1 bg-[#e3e2e0] rounded h-1.5 overflow-hidden"><div class="sbar" style="width:4%"></div></div></div>
+            <div class="flex items-center gap-2"><span class="text-xs text-[#787774] w-3">2</span><div class="flex-1 bg-[#e3e2e0] rounded h-1.5 overflow-hidden"><div class="sbar" style="width:0%"></div></div></div>
+            <div class="flex items-center gap-2"><span class="text-xs text-[#787774] w-3">1</span><div class="flex-1 bg-[#e3e2e0] rounded h-1.5 overflow-hidden"><div class="sbar" style="width:0%"></div></div></div>
           </div>
         </div>
 
-        <!-- Dark notebook decoration — right side -->
-        <div class="absolute -right-6 top-8 w-32 h-44 bg-[#1a2d50] rounded-xl shadow-2xl z-0 rotate-6 border border-white/5 hidden lg:block">
-          <div class="p-3 space-y-1.5 mt-4">
-            <div class="w-16 h-1.5 bg-white/10 rounded"></div>
-            <div class="w-12 h-1.5 bg-white/10 rounded"></div>
-            <div class="w-14 h-1.5 bg-white/10 rounded"></div>
+        <!-- Review cards -->
+        <div class="flex-1 space-y-4">
+
+          <!-- Review: HFA quote -->
+          <div class="bg-white border border-[#e3e2e0] rounded-lg p-5">
+            <div class="flex items-start justify-between mb-2">
+              <p class="font-semibold text-sm text-[#37352f]">Great analysis of home-field advantage</p>
+              <div class="flex gap-0.5 text-xs flex-shrink-0 ml-2"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+            </div>
+            <p class="text-sm text-[#787774] leading-relaxed">"Across 6,175 regular-season games from 2000–2023, home teams won <strong class="text-[#37352f]">56.26%</strong> of the time. The advantage is real — but it appears weaker than it was in the early 2000s, and 2020 stands out as the most extreme outlier (49.80%)."</p>
+            <div class="flex items-center gap-2 mt-3">
+              <div class="w-5 h-5 rounded-full bg-[#e3e2e0] flex items-center justify-center text-[7px] font-bold text-[#787774]">H</div>
+              <span class="text-xs text-[#787774]">Hampton Abbott · Jan 16, 2026</span>
+            </div>
+          </div>
+
+          <!-- Review: Blog 1 -->
+          <div class="bg-white border border-[#e3e2e0] rounded-lg p-5">
+            <div class="flex items-start justify-between mb-2">
+              <p class="font-semibold text-sm text-[#37352f]">Reflecting on Data Science in Social Contexts</p>
+              <div class="flex gap-0.5 text-xs flex-shrink-0 ml-2"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+            </div>
+            <p class="text-sm text-[#787774] leading-relaxed">Exploring how data analytics intersects with social responsibility and ethics — what it means to collect, analyze, and present data with integrity in a data-driven world.</p>
+            <div class="flex items-center gap-2 mt-3">
+              <div class="w-5 h-5 rounded-full bg-[#e3e2e0] flex items-center justify-center text-[7px] font-bold text-[#787774]">H</div>
+              <a href="/2026/01/16/reflecting-on-data-science.html" class="text-xs text-[#787774] hover:underline">Hampton Abbott · Jan 16, 2026</a>
+            </div>
+          </div>
+
+          <!-- Review: Blog 2 -->
+          <div class="bg-white border border-[#e3e2e0] rounded-lg p-5">
+            <div class="flex items-start justify-between mb-2">
+              <p class="font-semibold text-sm text-[#37352f]">Ethically Ambiguous Data Modeling: Navigating the Gray Areas</p>
+              <div class="flex gap-0.5 text-xs flex-shrink-0 ml-2"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+            </div>
+            <p class="text-sm text-[#787774] leading-relaxed">Navigating the gray areas in data modeling — when algorithms amplify bias and what practitioners can do to build more equitable, transparent systems.</p>
+            <div class="flex items-center gap-2 mt-3">
+              <div class="w-5 h-5 rounded-full bg-[#e3e2e0] flex items-center justify-center text-[7px] font-bold text-[#787774]">H</div>
+              <a href="/2026/01/27/ethically-ambiguous-data-modeling.html" class="text-xs text-[#787774] hover:underline">Hampton Abbott · Jan 27, 2026</a>
+            </div>
+          </div>
+
+          <!-- Review: Blog 3 -->
+          <div class="bg-white border border-[#e3e2e0] rounded-lg p-5">
+            <div class="flex items-start justify-between mb-2">
+              <p class="font-semibold text-sm text-[#37352f]">Opportunity, Agency, and Health: Where Structure Meets Choice</p>
+              <div class="flex gap-0.5 text-xs flex-shrink-0 ml-2"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+            </div>
+            <p class="text-sm text-[#787774] leading-relaxed">Where structure meets choice — a look at how data can illuminate the intersection of social opportunity, individual agency, and public health outcomes.</p>
+            <div class="flex items-center gap-2 mt-3">
+              <div class="w-5 h-5 rounded-full bg-[#e3e2e0] flex items-center justify-center text-[7px] font-bold text-[#787774]">H</div>
+              <a href="/2026/02/14/opportunity-agency-and-health.html" class="text-xs text-[#787774] hover:underline">Hampton Abbott · Feb 14, 2026</a>
+            </div>
+          </div>
+
+          <div class="text-center pt-1">
+            <a href="/blog" class="text-sm text-[#787774] hover:underline">Load more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── MORE BY HAMPTON ─── -->
+  <div class="border-t border-[#e3e2e0]">
+    <div class="max-w-screen-xl mx-auto px-4 py-10">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-xl font-bold text-[#37352f]">More by Hampton Abbott</h2>
+        <a href="/projects" class="text-sm text-[#787774] hover:underline">Browse 18 projects →</a>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+
+        <!-- HFA Project card -->
+        <a href="/projects/home-field-advantage" class="block bg-white border border-[#e3e2e0] rounded-lg overflow-hidden ch">
+          <div class="bg-[#edf0f5] p-4 h-24 flex items-center justify-center">
+            <div class="text-center">
+              <div class="text-2xl font-black text-[#37352f]">56.26%</div>
+              <div class="text-[9px] text-[#787774]">home win rate</div>
+            </div>
+          </div>
+          <div class="p-3 border-t border-[#e3e2e0]">
+            <div class="text-xs font-semibold text-[#37352f] mb-0.5">Home-Field Advantage</div>
+            <div class="text-[10px] text-[#787774]">Free</div>
+          </div>
+        </a>
+
+        <!-- Resume/CV card -->
+        <a href="https://github.com/HPAuncc" target="_blank" rel="noopener" class="block bg-white border border-[#e3e2e0] rounded-lg overflow-hidden ch">
+          <div class="bg-[#f1f0ef] p-4 h-24 flex flex-col items-center justify-center gap-1">
+            <svg class="w-7 h-7 text-[#787774]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            <div class="text-[9px] text-[#787774]">GitHub</div>
+          </div>
+          <div class="p-3 border-t border-[#e3e2e0]">
+            <div class="text-xs font-semibold text-[#37352f] mb-0.5">Resume / CV</div>
+            <div class="text-[10px] text-[#787774]">Free</div>
+          </div>
+        </a>
+
+        <!-- Coming soon -->
+        <div class="block bg-white border border-[#e3e2e0] rounded-lg overflow-hidden opacity-50 hidden md:block">
+          <div class="bg-[#f1f0ef] p-4 h-24 flex items-center justify-center">
+            <span class="text-3xl text-[#e3e2e0] font-light">+</span>
+          </div>
+          <div class="p-3 border-t border-[#e3e2e0]">
+            <div class="text-xs font-semibold text-[#787774] mb-0.5">Coming Soon</div>
+            <div class="text-[10px] text-[#787774]">Free</div>
+          </div>
+        </div>
+
+        <div class="block bg-white border border-[#e3e2e0] rounded-lg overflow-hidden opacity-50 hidden md:block">
+          <div class="bg-[#f1f0ef] p-4 h-24 flex items-center justify-center">
+            <span class="text-3xl text-[#e3e2e0] font-light">+</span>
+          </div>
+          <div class="p-3 border-t border-[#e3e2e0]">
+            <div class="text-xs font-semibold text-[#787774] mb-0.5">Coming Soon</div>
+            <div class="text-[10px] text-[#787774]">Free</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── MORE LIKE THIS (blog posts) ─── -->
+  <div class="border-t border-[#e3e2e0]">
+    <div class="max-w-screen-xl mx-auto px-4 py-10">
+      <h2 class="text-xl font-bold text-[#37352f] mb-6">More like this</h2>
+      <div class="grid md:grid-cols-3 gap-4">
+
+        <!-- Blog 1 -->
+        <a href="/2026/01/16/reflecting-on-data-science.html" class="block bg-white border border-[#e3e2e0] rounded-lg overflow-hidden ch">
+          <div class="bg-[#edf0f5] p-4 h-28 flex items-end">
+            <div class="w-full flex items-end gap-1 h-14">
+              <div class="flex-1 bg-blue-200 rounded-t" style="height:55%"></div>
+              <div class="flex-1 bg-blue-500 rounded-t" style="height:90%"></div>
+              <div class="flex-1 bg-blue-200 rounded-t" style="height:65%"></div>
+              <div class="flex-1 bg-blue-400 rounded-t" style="height:80%"></div>
+              <div class="flex-1 bg-blue-200 rounded-t" style="height:50%"></div>
+              <div class="flex-1 bg-blue-500 rounded-t" style="height:100%"></div>
+            </div>
+          </div>
+          <div class="p-3 border-t border-[#e3e2e0]">
+            <div class="flex items-center justify-between mb-1">
+              <div class="flex items-center gap-1">
+                <div class="w-4 h-4 rounded-full bg-[#e3e2e0] flex items-center justify-center text-[6px] font-bold text-[#787774]">H</div>
+                <span class="text-[9px] text-[#787774]">Hampton Abbott</span>
+              </div>
+              <span class="text-[9px] text-[#787774]">Free</span>
+            </div>
+            <div class="text-xs font-semibold text-[#37352f] leading-snug">Reflecting on Data Science in Social Contexts</div>
+          </div>
+        </a>
+
+        <!-- Blog 2 -->
+        <a href="/2026/01/27/ethically-ambiguous-data-modeling.html" class="block bg-white border border-[#e3e2e0] rounded-lg overflow-hidden ch">
+          <div class="bg-[#edf0f5] p-4 h-28 flex items-center">
+            <div class="w-full flex items-center gap-3">
+              <svg width="52" height="52" viewBox="0 0 52 52" class="flex-shrink-0">
+                <circle cx="26" cy="26" r="20" fill="none" stroke="#e3e2e0" stroke-width="6"/>
+                <circle cx="26" cy="26" r="20" fill="none" stroke="#60a5fa" stroke-width="6"
+                  stroke-dasharray="90 36" stroke-dashoffset="28" stroke-linecap="round"/>
+              </svg>
+              <div class="flex-1 space-y-1.5">
+                <div class="h-1.5 bg-blue-200 rounded-full w-full"></div>
+                <div class="h-1.5 bg-gray-200 rounded-full w-3/4"></div>
+                <div class="h-1.5 bg-gray-200 rounded-full w-5/6"></div>
+              </div>
+            </div>
+          </div>
+          <div class="p-3 border-t border-[#e3e2e0]">
+            <div class="flex items-center justify-between mb-1">
+              <div class="flex items-center gap-1">
+                <div class="w-4 h-4 rounded-full bg-[#e3e2e0] flex items-center justify-center text-[6px] font-bold text-[#787774]">H</div>
+                <span class="text-[9px] text-[#787774]">Hampton Abbott</span>
+              </div>
+              <span class="text-[9px] text-[#787774]">Free</span>
+            </div>
+            <div class="text-xs font-semibold text-[#37352f] leading-snug">Ethically Ambiguous Data Modeling</div>
+          </div>
+        </a>
+
+        <!-- Blog 3 -->
+        <a href="/2026/02/14/opportunity-agency-and-health.html" class="block bg-white border border-[#e3e2e0] rounded-lg overflow-hidden ch">
+          <div class="bg-[#edf0f5] p-4 h-28 flex items-center justify-center">
+            <img src="https://placehold.co/280x80/e2e8f0/94a3b8?text=visualization" alt="" class="w-full h-full object-cover rounded" />
+          </div>
+          <div class="p-3 border-t border-[#e3e2e0]">
+            <div class="flex items-center justify-between mb-1">
+              <div class="flex items-center gap-1">
+                <div class="w-4 h-4 rounded-full bg-[#e3e2e0] flex items-center justify-center text-[6px] font-bold text-[#787774]">H</div>
+                <span class="text-[9px] text-[#787774]">Hampton Abbott</span>
+              </div>
+              <span class="text-[9px] text-[#787774]">Free</span>
+            </div>
+            <div class="text-xs font-semibold text-[#37352f] leading-snug">Opportunity, Agency, and Health</div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── FEATURED IN ─── -->
+  <div class="border-t border-[#e3e2e0]">
+    <div class="max-w-screen-xl mx-auto px-4 py-10">
+      <h2 class="text-xl font-bold text-[#37352f] mb-6">Featured in</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl">
+
+        <!-- UNCC -->
+        <div class="bg-white border border-[#e3e2e0] rounded-lg overflow-hidden flex ch">
+          <div class="bg-[#edf0f5] w-20 flex items-center justify-center flex-shrink-0 p-3">
+            <div class="text-center">
+              <div class="text-[10px] font-black text-[#37352f] leading-none">UNC</div>
+              <div class="text-[8px] text-[#787774]">Charlotte</div>
+            </div>
+          </div>
+          <div class="p-3 flex flex-col justify-center">
+            <div class="text-xs font-semibold text-[#37352f] mb-0.5">Data Science Foundations</div>
+            <div class="text-[10px] text-[#787774]">DTSC-2301 · UNC Charlotte</div>
+          </div>
+        </div>
+
+        <!-- IBM Data Science -->
+        <div class="bg-white border border-[#e3e2e0] rounded-lg overflow-hidden flex ch">
+          <div class="bg-[#edf0f5] w-20 flex items-center justify-center flex-shrink-0 p-3">
+            <div class="text-[11px] font-black text-blue-700">IBM</div>
+          </div>
+          <div class="p-3 flex flex-col justify-center">
+            <div class="text-xs font-semibold text-[#37352f] mb-0.5">IBM Data Science</div>
+            <div class="text-[10px] text-[#787774]">Certificate · 03/2025</div>
+          </div>
+        </div>
+
+        <!-- Python/Tools -->
+        <div class="bg-white border border-[#e3e2e0] rounded-lg overflow-hidden flex ch">
+          <div class="bg-[#edf0f5] w-20 flex items-center justify-center flex-shrink-0 p-3">
+            <div class="text-[10px] font-mono font-bold text-blue-600">py</div>
+          </div>
+          <div class="p-3 flex flex-col justify-center">
+            <div class="text-xs font-semibold text-[#37352f] mb-0.5">Tools &amp; Stack</div>
+            <div class="text-[10px] text-[#787774]">Python · SQL · pandas · NumPy</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── BECOME A CREATOR (dark CTA) ─── -->
+  <div class="border-t border-[#e3e2e0] bg-[#0d1b36]">
+    <div class="max-w-screen-xl mx-auto px-4 py-16">
+
+      <!-- Submit / tagline heading -->
+      <div class="text-center mb-12">
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-black text-white tracking-tight leading-snug mb-2">
+          Become a creator
+        </h2>
+        <p class="text-white/50 text-sm max-w-md mx-auto mb-6">
+          Submit your analysis to the portfolio, get featured, and even get paid — all in just a few clicks.
+        </p>
+        <a href="/projects"
+           class="inline-flex items-center gap-1.5 bg-white text-[#37352f] font-semibold text-sm px-5 py-2 rounded hover:bg-gray-100 transition-colors">
+          Get started →
+        </a>
+      </div>
+
+      <!-- Letter card -->
+      <div class="max-w-2xl mx-auto">
+        <div class="relative">
+          <div class="bg-white rounded-2xl p-8 md:p-10 shadow-2xl relative z-10">
+            <div class="flex items-center gap-2 mb-6">
+              <span class="text-xs text-[#787774] font-semibold uppercase tracking-widest">Dear business owner,</span>
+              <span class="text-[#e3e2e0] text-xs">✉</span>
+            </div>
+            <p class="text-sm text-[#787774] leading-relaxed mb-4">
+              Running a sports analytics portfolio isn't for the faint of heart. Especially when you want to do it right.
+              It can be hard to get clean data. You need good questions. Specifically demand careful, reproducible analysis.
+            </p>
+            <p class="text-sm text-[#787774] leading-relaxed mb-4">
+              We sometimes forget that. They take a long time. Require care.
+            </p>
+            <p class="text-sm text-[#787774] leading-relaxed mb-8">
+              That's why I did it in the right way.
+            </p>
+            <p class="text-sm text-[#787774] mb-8">Love, only me.</p>
+            <div class="text-sm font-semibold text-[#37352f]" style="font-style: italic;">Hampton Abbott</div>
+            <!-- Sticky note -->
+            <div class="absolute -top-5 right-6 bg-yellow-300 text-yellow-900 text-[10px] font-bold p-3 rounded shadow-lg rotate-3 w-24 text-center leading-tight z-20">
+              Sports<br />Analytics<br />@ UNCC
+            </div>
+          </div>
+          <!-- Dark notebook decoration -->
+          <div class="absolute -right-6 top-8 w-32 h-44 bg-[#1a2d50] rounded-xl shadow-2xl z-0 rotate-6 border border-white/5 hidden lg:block">
+            <div class="p-3 space-y-1.5 mt-4">
+              <div class="w-16 h-1.5 bg-white/10 rounded"></div>
+              <div class="w-12 h-1.5 bg-white/10 rounded"></div>
+              <div class="w-14 h-1.5 bg-white/10 rounded"></div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Tagline + CTA -->
+      <!-- Tagline below letter -->
       <div class="text-center mt-16">
-        <p class="text-white text-2xl md:text-3xl lg:text-4xl font-black tracking-tighter leading-snug max-w-xl mx-auto">
+        <p class="text-white text-xl md:text-2xl lg:text-3xl font-black tracking-tight leading-snug max-w-xl mx-auto">
           When you let data speak clearly,<br />better understanding follows, faster.
         </p>
         <a href="/projects"
-           class="mt-8 inline-block bg-white text-gray-900 font-semibold text-sm px-8 py-3 rounded-full hover:bg-gray-100 transition-colors">
+           class="mt-6 inline-block bg-white text-[#37352f] font-semibold text-sm px-6 py-2.5 rounded hover:bg-gray-100 transition-colors">
           Start here
         </a>
       </div>
 
-      <!-- Footer -->
-      <div class="mt-16 pt-8 border-t border-white/10 w-full flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/30">
-        <span>© 2026 Hampton P. Abbott · Personal Portfolio</span>
-        <div class="flex gap-6">
-          <a href="/blog"     class="hover:text-white/60 transition-colors">Blog</a>
-          <a href="/projects" class="hover:text-white/60 transition-colors">Projects</a>
-          <a href="https://github.com/HPAuncc" target="_blank" rel="noopener" class="hover:text-white/60 transition-colors">GitHub</a>
+    </div>
+  </div>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="bg-white border-t border-[#e3e2e0]">
+    <div class="max-w-screen-xl mx-auto px-4 py-12">
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-10">
+
+        <!-- Logo + socials -->
+        <div class="col-span-2 md:col-span-1">
+          <a href="/" class="flex items-center gap-2 font-semibold text-sm text-[#37352f] mb-4">
+            <div class="w-6 h-6 bg-[#37352f] rounded-sm flex items-center justify-center text-white text-[11px] font-black">H</div>
+            HP Abbott
+          </a>
+          <div class="flex gap-3 text-[#787774]">
+            <a href="https://github.com/HPAuncc" target="_blank" rel="noopener" aria-label="GitHub" class="hover:text-[#37352f] transition-colors">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/hamptonabbott" target="_blank" rel="noopener" aria-label="LinkedIn" class="hover:text-[#37352f] transition-colors">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+            <a href="mailto:abbott.hampton@gmail.com" aria-label="Email" class="hover:text-[#37352f] transition-colors">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Company -->
+        <div>
+          <h3 class="text-[10px] font-semibold text-[#37352f] uppercase tracking-wider mb-3">Company</h3>
+          <ul class="space-y-2 text-sm text-[#787774]">
+            <li><a href="/" class="hover:text-[#37352f] transition-colors">About us</a></li>
+            <li><a href="/blog" class="hover:text-[#37352f] transition-colors">Blog</a></li>
+            <li><a href="/projects" class="hover:text-[#37352f] transition-colors">Careers</a></li>
+          </ul>
+        </div>
+
+        <!-- Tools -->
+        <div>
+          <h3 class="text-[10px] font-semibold text-[#37352f] uppercase tracking-wider mb-3">Tools</h3>
+          <ul class="space-y-2 text-sm text-[#787774]">
+            <li><span>Python</span></li>
+            <li><span>pandas · NumPy</span></li>
+            <li><span>matplotlib · seaborn</span></li>
+            <li><span>SQL · Java</span></li>
+            <li><span>Jupyter Notebook</span></li>
+          </ul>
+        </div>
+
+        <!-- Resources -->
+        <div>
+          <h3 class="text-[10px] font-semibold text-[#37352f] uppercase tracking-wider mb-3">Resources</h3>
+          <ul class="space-y-2 text-sm text-[#787774]">
+            <li><a href="/projects" class="hover:text-[#37352f] transition-colors">Projects</a></li>
+            <li><a href="/blog" class="hover:text-[#37352f] transition-colors">Blog</a></li>
+            <li><a href="https://github.com/HPAuncc" target="_blank" rel="noopener" class="hover:text-[#37352f] transition-colors">GitHub</a></li>
+          </ul>
+        </div>
+
+        <!-- HP Abbott for -->
+        <div>
+          <h3 class="text-[10px] font-semibold text-[#37352f] uppercase tracking-wider mb-3">HP Abbott for</h3>
+          <ul class="space-y-2 text-sm text-[#787774]">
+            <li><span>Sports Teams</span></li>
+            <li><span>Data Analysts</span></li>
+            <li><span>Students</span></li>
+            <li><span>Personal</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="border-t border-[#e3e2e0] pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#787774]">
+        <div class="flex items-center gap-3">
+          <span>🇺🇸 English (US)</span>
+        </div>
+        <div class="flex flex-wrap justify-center gap-4">
+          <span>© 2026 Hampton P. Abbott · Personal Portfolio</span>
+          <a href="#" class="hover:text-[#37352f] transition-colors">Privacy policy</a>
+          <a href="#" class="hover:text-[#37352f] transition-colors">Terms</a>
+        </div>
+        <div>
+          <a href="/projects" class="hover:text-[#37352f] transition-colors">Explore more →</a>
         </div>
       </div>
+
     </div>
-  </section>
+  </footer>
 
 </body>
 </html>

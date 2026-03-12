@@ -1,6 +1,7 @@
 ---
 layout: post
-title: "Ethically Ambiguous Data Modeling: Navigating the Gray Areas"
+title: "Ethically Ambiguous Data Modeling"
+subtitle: "Navigating the Gray Areas of Model Design"
 date: 2026-01-27
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: post
-title: "Opportunity, Agency, and Health: Where Structure Meets Choice"
+title: "Opportunity, Agency, and Health"
+subtitle: "Where Structure Meets Choice"
 date: 2026-02-14
 ---
 

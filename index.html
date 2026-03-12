@@ -151,23 +151,24 @@ layout: null
 
           <!-- HFA -->
           <a href="/projects/home-field-advantage" class="block bg-[#f6f6f5] border border-[#e3e2e0] rounded-xl overflow-hidden ch group">
-            <div class="p-5 h-36 flex flex-col justify-between">
-              <div class="flex items-end gap-0.5 h-14">
-                <div class="flex-1 bg-[#d0e8e4] rounded-t" style="height:55%"></div>
-                <div class="flex-1 bg-[#0f7b6c] rounded-t" style="height:90%"></div>
-                <div class="flex-1 bg-[#79c5bc] rounded-t" style="height:65%"></div>
-                <div class="flex-1 bg-[#4aab9f] rounded-t" style="height:80%"></div>
-                <div class="flex-1 bg-[#d0e8e4] rounded-t" style="height:50%"></div>
-                <div class="flex-1 bg-[#0f7b6c] rounded-t" style="height:100%"></div>
+            <div class="px-4 pt-4 pb-3 h-36 flex flex-col justify-between">
+              <div class="text-[9px] font-semibold text-[#787774] uppercase tracking-wider">Home Win Rate by Season</div>
+              <div class="flex items-end gap-1 h-16 mt-1">
+                <div class="flex-1 bg-[#d0e8e4] rounded-t-sm" style="height:52%"></div>
+                <div class="flex-1 bg-[#79c5bc] rounded-t-sm" style="height:68%"></div>
+                <div class="flex-1 bg-[#4aab9f] rounded-t-sm" style="height:60%"></div>
+                <div class="flex-1 bg-[#0f7b6c] rounded-t-sm" style="height:85%"></div>
+                <div class="flex-1 bg-[#79c5bc] rounded-t-sm" style="height:72%"></div>
+                <div class="flex-1 bg-[#0f7b6c] rounded-t-sm" style="height:100%"></div>
               </div>
-              <div>
-                <div class="text-2xl font-black text-[#37352f]">56.26%</div>
-                <div class="text-[11px] text-[#787774]">home win rate</div>
+              <div class="flex items-baseline gap-1.5 mt-2">
+                <div class="text-xl font-black text-[#37352f]">56.26%</div>
+                <div class="text-[10px] text-[#787774]">home win rate</div>
               </div>
             </div>
             <div class="px-4 py-3 border-t border-[#e3e2e0] bg-white">
               <div class="text-sm font-semibold text-[#37352f]">Home-Field Advantage</div>
-              <div class="text-[11px] text-[#787774] mt-0.5">NFL · Python · pandas · nflverse</div>
+              <div class="text-[11px] text-[#787774] mt-0.5">NFL Analytics · Python · pandas</div>
             </div>
           </a>
 
@@ -291,12 +292,25 @@ layout: null
 
       <!-- Blog 1 -->
       <a href="/2026/01/16/reflecting-on-data-science.html" class="block bg-white border border-[#e3e2e0] rounded-xl overflow-hidden ch">
-        <div class="bg-[#f6f6f5] p-5 h-32 flex flex-col justify-end">
-          <div class="space-y-1.5">
-            <div class="h-1.5 bg-[#0f7b6c]/30 rounded-full w-full"></div>
-            <div class="h-1.5 bg-[#e3e2e0] rounded-full w-5/6"></div>
-            <div class="h-1.5 bg-[#e3e2e0] rounded-full w-4/5"></div>
-          </div>
+        <div class="bg-[#f6f6f5] h-32 flex items-center justify-center">
+          <svg width="108" height="72" viewBox="0 0 108 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Connection lines -->
+            <line x1="54" y1="36" x2="18" y2="14" stroke="#d0e8e4" stroke-width="1.5"/>
+            <line x1="54" y1="36" x2="90" y2="14" stroke="#d0e8e4" stroke-width="1.5"/>
+            <line x1="54" y1="36" x2="12" y2="58" stroke="#d0e8e4" stroke-width="1.5"/>
+            <line x1="54" y1="36" x2="96" y2="58" stroke="#d0e8e4" stroke-width="1.5"/>
+            <line x1="18" y1="14" x2="90" y2="14" stroke="#e3e2e0" stroke-width="1"/>
+            <line x1="12" y1="58" x2="96" y2="58" stroke="#e3e2e0" stroke-width="1"/>
+            <!-- Outer nodes -->
+            <circle cx="18" cy="14" r="5" fill="#e3e2e0"/>
+            <circle cx="90" cy="14" r="5" fill="#e3e2e0"/>
+            <circle cx="12" cy="58" r="5" fill="#d0e8e4"/>
+            <circle cx="96" cy="58" r="5" fill="#d0e8e4"/>
+            <!-- Center hub -->
+            <circle cx="54" cy="36" r="11" fill="#0f7b6c" opacity="0.15"/>
+            <circle cx="54" cy="36" r="7" fill="#0f7b6c"/>
+            <circle cx="54" cy="36" r="3.5" fill="white"/>
+          </svg>
         </div>
         <div class="p-4 border-t border-[#e3e2e0]">
           <div class="flex items-center gap-1.5 mb-2">
@@ -309,11 +323,22 @@ layout: null
 
       <!-- Blog 2 -->
       <a href="/2026/01/27/ethically-ambiguous-data-modeling.html" class="block bg-white border border-[#e3e2e0] rounded-xl overflow-hidden ch">
-        <div class="bg-[#f6f6f5] p-5 h-32 flex items-center justify-center">
-          <svg width="60" height="60" viewBox="0 0 60 60">
-            <circle cx="30" cy="30" r="24" fill="none" stroke="#e3e2e0" stroke-width="7"/>
-            <circle cx="30" cy="30" r="24" fill="none" stroke="#0f7b6c" stroke-width="7"
-              stroke-dasharray="100 51" stroke-dashoffset="25" stroke-linecap="round"/>
+        <div class="bg-[#f6f6f5] h-32 flex items-center justify-center">
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Pole -->
+            <line x1="36" y1="10" x2="36" y2="62" stroke="#0f7b6c" stroke-width="2" stroke-linecap="round"/>
+            <!-- Base -->
+            <line x1="26" y1="62" x2="46" y2="62" stroke="#0f7b6c" stroke-width="2" stroke-linecap="round"/>
+            <!-- Beam -->
+            <line x1="12" y1="22" x2="60" y2="22" stroke="#0f7b6c" stroke-width="2" stroke-linecap="round"/>
+            <!-- Top knob -->
+            <circle cx="36" cy="10" r="3.5" fill="#0f7b6c"/>
+            <!-- Left arm + pan -->
+            <line x1="12" y1="22" x2="12" y2="40" stroke="#0f7b6c" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M5 40 Q12 47 19 40" stroke="#0f7b6c" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <!-- Right arm + pan (slightly lower = imbalance) -->
+            <line x1="60" y1="22" x2="60" y2="43" stroke="#0f7b6c" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M53 43 Q60 50 67 43" stroke="#0f7b6c" stroke-width="2" fill="none" stroke-linecap="round"/>
           </svg>
         </div>
         <div class="p-4 border-t border-[#e3e2e0]">
@@ -331,8 +356,21 @@ layout: null
     <div class="mt-4">
       <a href="/2026/02/14/opportunity-agency-and-health.html" class="block bg-white border border-[#e3e2e0] rounded-xl overflow-hidden ch">
         <div class="flex flex-col sm:flex-row items-stretch">
-          <div class="sm:w-48 bg-[#f6f6f5] p-5 flex items-center justify-center flex-shrink-0">
-            <img src="https://placehold.co/180x80/e2e8f0/94a3b8?text=visualization" alt="" class="w-full rounded" />
+          <div class="sm:w-48 bg-[#f6f6f5] flex items-center justify-center flex-shrink-0" style="min-height:112px">
+            <svg width="80" height="72" viewBox="0 0 80 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Incoming path (bottom) -->
+              <line x1="40" y1="68" x2="40" y2="40" stroke="#0f7b6c" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- Junction dot -->
+              <circle cx="40" cy="40" r="4.5" fill="#0f7b6c"/>
+              <!-- Left branch (chosen path — bold teal) -->
+              <line x1="40" y1="40" x2="12" y2="14" stroke="#0f7b6c" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="12" cy="14" r="5.5" fill="#0f7b6c"/>
+              <!-- Right branch (other path — muted) -->
+              <line x1="40" y1="40" x2="68" y2="14" stroke="#d0e8e4" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="68" cy="14" r="5.5" fill="#d0e8e4"/>
+              <!-- Person at base -->
+              <circle cx="40" cy="70" r="0" fill="none"/>
+            </svg>
           </div>
           <div class="flex-1 p-5 border-t sm:border-t-0 sm:border-l border-[#e3e2e0]">
             <div class="flex items-center gap-1.5 mb-2">

@@ -3,6 +3,8 @@ layout: post
 title: "Opportunity, Agency, and Health"
 subtitle: "Where Structure Meets Choice"
 date: 2026-02-14
+thumbnail: /assets/images/blog-3/thumbnail.png
+thumbnail_alt: "Isometric vector illustration of a strategic process map or user journey featuring layered paths, house icons, and human figures in a modern teal and orange palette."
 ---
 
 When we talk about health, it is easy to frame it as either personal responsibility or social structure. The Social Determinants of Health remind us that neither explanation is complete on its own. To me, these determinants are the environmental and social conditions that shape the starting line of a person’s life—things like education quality, neighborhood safety, job access, transportation, and healthcare availability. These factors do not dictate outcomes, but they influence the range of challenges and advantages someone must navigate.

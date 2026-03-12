@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "Jekyll Dev Server",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "4000", "--directory", "/Users/hampton/Development/Portfolio/HPAuncc.github.io"],
+      "runtimeExecutable": "jekyll",
+      "runtimeArgs": ["serve", "--livereload"],
       "port": 4000
     }
   ]

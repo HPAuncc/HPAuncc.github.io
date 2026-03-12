@@ -3,6 +3,8 @@ layout: post
 title: "Ethically Ambiguous Data Modeling"
 subtitle: "Navigating the Gray Areas of Model Design"
 date: 2026-01-27
+thumbnail: /assets/images/blog-2/thumbnail.png
+thumbnail_alt: "Conceptual illustration of ethically ambiguous data modeling, depicting a central human node split between a structured, glowing data network and a chaotic, hazy web of connections."
 ---
 
 Ethically ambiguous data modeling refers to situations where a model is technically sound and legally permissible, yet its real-world consequences raise moral concerns that are not clearly right or wrong. These models often perform well according to standard metrics like accuracy or efficiency, but they operate within social systems marked by inequality, incomplete information, and uneven impacts. The ambiguity arises because harm can occur even when data scientists follow accepted best practices and comply with the law.

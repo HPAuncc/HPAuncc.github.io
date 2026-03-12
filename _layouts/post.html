@@ -3,6 +3,7 @@ layout: default
 ---
 <article class="post">
   <h1>{{ page.title }}</h1>
+  {% if page.subtitle %}<p style="font-size:1.1rem;color:#6b7280;margin-top:-0.5rem;margin-bottom:0.5rem;font-weight:400;">{{ page.subtitle }}</p>{% endif %}
   <time datetime="{{ page.date | date_to_xmlschema }}">
     {{ page.date | date: "%B %d, %Y" }}
   </time>

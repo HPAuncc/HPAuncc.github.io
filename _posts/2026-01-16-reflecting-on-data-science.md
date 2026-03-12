@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Data Science in Society"
+subtitle: "Context, Bias, and Responsibility"
 date: 2026-01-16
 ---
 

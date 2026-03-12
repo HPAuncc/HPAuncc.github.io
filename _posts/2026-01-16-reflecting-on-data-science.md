@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Reflecting on Data Science in Social Contexts"
+title: "Data Science in Society"
 date: 2026-01-16
 ---
 

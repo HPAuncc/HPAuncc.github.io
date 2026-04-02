@@ -25,7 +25,7 @@ Before touching any model, the numbers tell an interesting story.
 
 1-seeds win about 85% of their first-round games. But by the Sweet 16, the gap narrows fast. A 5-seed and a 3-seed have played nearly the same number of tournament games historically. The chart below (from the notebook EDA) shows win rate by seed across all tournament rounds since 2003 — notice how quickly the advantage flattens out past seed 4.
 
-![Tournament Win Rate by Seed](visualizations/seed_win_rates.png)
+![Tournament Win Rate by Seed](https://raw.githubusercontent.com/HPAuncc/March-Madness-Model/main/visualizations/seed_win_rates.png)
 
 **Games are close.** Nearly 29% of all tournament games since 2003 were decided by 5 points or fewer. The average winning margin is only 12 points. That means a lot of outcomes come down to a few possessions — which no model can reliably predict.
 
@@ -59,7 +59,7 @@ Short answer: better than chance, but not perfect.
 
 On the 2025 tournament — data the model had never seen — all four models beat the 50% coin-flip baseline by a wide margin. The **Random Forest** was selected as the best performer based on log loss, which measures not just whether the model picked the right winner but how *confident* it was.
 
-![Model Comparison](visualizations/model_comparison.png)
+![Model Comparison](https://raw.githubusercontent.com/HPAuncc/March-Madness-Model/main/visualizations/model_comparison.png)
 
 The model is good at picking expected winners. It's not good at picking 12-over-5 upsets — and neither is anyone else.
 
@@ -76,7 +76,7 @@ According to the feature importance analysis, the factors that matter most are:
 
 What matters less than people think: free throw rate and defensive rebounding in isolation. It's the combination of seed, schedule strength, and efficient play that separates tournament teams.
 
-![Feature Importance - Random Forest](visualizations/feature_importance_rf.png)
+![Feature Importance - Random Forest](https://raw.githubusercontent.com/HPAuncc/March-Madness-Model/main/visualizations/feature_importance_rf.png)
 
 ---
 

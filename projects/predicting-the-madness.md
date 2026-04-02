@@ -1,10 +1,11 @@
 ---
-layout: default
+layout: post
 title: "Predicting the Madness"
+subtitle: "Can a Machine Actually Predict March Madness?"
+thumbnail: /assets/images/march-madness/thumbnail.png
+thumbnail_alt: "An infographic illustration depicting NCAA March Madness basketball analytics and predictive data modeling with various charts and graphs."
 nav_exclude: true
 ---
-# Can a Machine Actually Predict March Madness?
-
 Every March, 68 college basketball teams enter a tournament and millions of people fill out brackets convinced they've figured it out. Most of them haven't. Even the most informed fans rarely get more than 60% of games right.
 
 So I decided to ask a different question: **what does the data actually say about who wins — and can a machine learning model do better than conventional wisdom?**

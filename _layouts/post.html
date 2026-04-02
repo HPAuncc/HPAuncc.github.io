@@ -19,4 +19,8 @@ layout: default
   </div>
 </article>
 
+{% if page.layout == 'post' and page.collection == 'posts' %}
 <a href="{{ '/blog' | relative_url }}">← Back to Blog</a>
+{% else %}
+<a href="{{ '/projects' | relative_url }}">← Back to Projects</a>
+{% endif %}

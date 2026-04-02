@@ -4,13 +4,11 @@ layout: default
 <article class="post">
   <h1>{{ page.title }}</h1>
   {% if page.subtitle %}<p style="font-size:1.1rem;color:#6b7280;margin-top:-0.5rem;margin-bottom:0.5rem;font-weight:400;">{{ page.subtitle }}</p>{% endif %}
-  <time datetime="{{ page.date | date_to_xmlschema }}">
-    {{ page.date | date: "%B %d, %Y" }}
-  </time>
+  {% if page.date %}<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>{% endif %}
 
   {% if page.thumbnail %}
-  <div style="margin:1.5rem 0;border-radius:10px;overflow:hidden;max-height:360px;">
-    <img src="{{ page.thumbnail | relative_url }}" alt="{{ page.thumbnail_alt }}" style="width:100%;height:100%;object-fit:cover;display:block;">
+  <div style="margin-top:1rem;border-radius:10px;overflow:hidden;height:300px;">
+    <img src="{{ page.thumbnail | relative_url }}" alt="{{ page.thumbnail_alt }}" style="width:100%;height:100%;object-fit:cover;object-position:center 55%;display:block;">
   </div>
   {% endif %}
 

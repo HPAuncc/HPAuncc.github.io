@@ -115,6 +115,6 @@ The championship game tips off April 7. This post will be updated with the final
 
 **Libraries used:** pandas, numpy, scikit-learn, XGBoost, matplotlib, seaborn
 
-**AI tools used:** Claude (Anthropic) was used as a coding assistant to help structure and debug the notebook. All analysis, interpretation, and writing reflect my own understanding and decisions.
+**AI tools used:** Claude (Anthropic) was used to help structure and debug the notebook and assist with feature engineering. All analysis, interpretation, and writing reflect my own understanding and decisions.
 
 **Full code:** [github.com/HPAuncc/March-Madness-Model](https://github.com/HPAuncc/March-Madness-Model)

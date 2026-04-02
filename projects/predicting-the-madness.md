@@ -89,13 +89,23 @@ For March Madness specifically: the model confirms that seed is meaningful but n
 
 ---
 
-## 2026 Predictions — In Progress
+## How Did the Model Actually Do in 2026?
 
-The model has the full 2026 bracket loaded with this season's regular season stats and is generating win probabilities for every matchup. The best teams by net efficiency are the clear favorites — but if history is any guide, at least one double-digit seed is going to break everyone's bracket.
+Through the Elite Eight — 57 games the model had never seen — the Random Forest correctly predicted **44 of 57 matchups (77.2%)**.
 
-The 2026 NCAA Championship game tips off on **April 7**. Once the tournament concludes, this post will be updated with a full breakdown of how the model performed on a live bracket it never saw — which games it got right, which upsets it missed, and whether a data-driven approach actually beats conventional wisdom in real time.
+| Round | Correct | Total | Accuracy |
+|---|---|---|---|
+| Round of 64 | 24 | 29 | 83% |
+| Round of 32 | 12 | 16 | 75% |
+| Sweet 16 | 5 | 8 | 62% |
+| Elite Eight | 3 | 4 | 75% |
+| **Total** | **44** | **57** | **77.2%** |
 
-*Check back after April 7 for the final results.*
+The model was sharpest in the first round, where seed gaps are largest and favorites almost always win. It got shakier in the Sweet 16 — exactly where the bracket gets genuinely unpredictable. The four teams that survived to the Final Four: **UConn, Illinois, Michigan, and Arizona**.
+
+The championship game tips off April 7. This post will be updated with the final result — including whether a model trained purely on regular season efficiency could pick the last game right.
+
+*Championship update coming after April 7.*
 
 ---
 

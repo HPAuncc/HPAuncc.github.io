@@ -91,21 +91,19 @@ For March Madness specifically: the model confirms that seed is meaningful but n
 
 ## How Did the Model Actually Do in 2026?
 
-Through the Elite Eight — 57 games the model had never seen — the Random Forest correctly predicted **44 of 57 matchups (77.2%)**.
+Across the full 2026 tournament — 59 main bracket games the model had never seen — the Random Forest correctly predicted **46 of 59 matchups (78.0%)**.
 
 | Round | Correct | Total | Accuracy |
 |---|---|---|---|
-| Round of 64 | 24 | 29 | 83% |
+| Round of 64 | 23 | 28 | 82% |
 | Round of 32 | 12 | 16 | 75% |
 | Sweet 16 | 5 | 8 | 62% |
 | Elite Eight | 3 | 4 | 75% |
-| **Total** | **44** | **57** | **77.2%** |
+| Final Four | 2 | 2 | 100% |
+| Championship | 1 | 1 | 100% |
+| **Total** | **46** | **59** | **78.0%** |
 
-The model was sharpest in the first round, where seed gaps are largest and favorites almost always win. It got shakier in the Sweet 16 — exactly where the bracket gets genuinely unpredictable. The four teams that survived to the Final Four: **UConn, Illinois, Michigan, and Arizona**.
-
-The championship game tips off April 7. This post will be updated with the final result — including whether a model trained purely on regular season efficiency could pick the last game right.
-
-*Championship update coming after April 7.*
+The model was sharpest in the first round, where seed gaps are largest and favorites almost always win. It got shakier in the Sweet 16 — exactly where the bracket gets genuinely unpredictable — then finished strong, correctly predicting both Final Four games and the championship. **Michigan** defeated UConn 69–63 to win the 2026 national title, and the model had Michigan winning it all.
 
 ---
 

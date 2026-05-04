@@ -256,7 +256,7 @@ This is a known small-sample behavior of unconstrained-covariance GMMs, not a fa
 | **Hungarian Assignment** | 8 | **3–6** | 0.0430 | 1.7732 | 2.7089 | 0.2125 | 0.6069 | **7.875** |
 | GMM | 8 | 3–6 | **0.1502** | **1.3610** | **6.3377** | 0.1359 | 0.4845 | 6.75 |
 
-![Side-by-side comparison of all four models on six evaluation metrics.](https://raw.githubusercontent.com/HPAuncc/teammate-matcher/main/outputs/poster_comparison_table.png)
+![Comparison of six evaluation metrics across all four models.](https://raw.githubusercontent.com/HPAuncc/teammate-matcher/main/outputs/comparison_metrics.png)
 
 ### 5.3 Interpretation
 

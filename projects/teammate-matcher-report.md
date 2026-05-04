@@ -6,10 +6,8 @@ thumbnail: /assets/images/teammate-matcher-report/thumbnail.png
 thumbnail_alt: "Technical report thumbnail for the Teammate Matcher project showing clustering and optimization methodology."
 nav_exclude: true
 ---
-**Course:** DTSC 2302 — Data Science II
-**Institution:** University of North Carolina at Charlotte
-**Date:** May 2026
-**Repository:** [github.com/HPAuncc/teammate-matcher](https://github.com/HPAuncc/teammate-matcher)
+*Hampton Abbott & Carly Castillo — DTSC 2302, University of North Carolina at Charlotte*
+*Spring 2026*
 
 ---
 
@@ -433,3 +431,5 @@ All random processes seeded with `random_state = 42`. Notebooks are numbered and
 **Software:** Python 3.12, pandas, NumPy, scikit-learn (K-Means, Agglomerative, GMM, PCA), SciPy (Hungarian Algorithm via `linear_sum_assignment`), matplotlib, seaborn.
 
 **AI Tool Transparency:** Claude (Anthropic) was used as a coding assistant throughout development.
+
+**Repository:** [github.com/HPAuncc/teammate-matcher](https://github.com/HPAuncc/teammate-matcher)

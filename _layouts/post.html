@@ -1,6 +1,17 @@
 ---
 layout: default
 ---
+<!-- KaTeX math rendering -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '$', right: '$', display: false}
+    ]
+  });"></script>
+
 <article class="post">
   <h1>{{ page.title }}</h1>
   {% if page.subtitle %}<p style="font-size:1.1rem;color:#6b7280;margin-top:-0.5rem;margin-bottom:0.5rem;font-weight:400;">{{ page.subtitle }}</p>{% endif %}

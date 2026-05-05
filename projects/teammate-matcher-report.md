@@ -195,7 +195,7 @@ Agglomerative clustering builds clusters bottom-up using Ward linkage, which mer
 
 **This is the primary deployment model and satisfies the "beyond class" rubric requirement.**
 
-The Hungarian Algorithm solves the balanced assignment problem directly. Given N students and k teams with target size t = ⌊N/k⌋:
+The Hungarian Algorithm solves the balanced assignment problem directly (Kuhn, 1955). Given N students and k teams with target size t = ⌊N/k⌋:
 
 1. Build a cost matrix C where C_ij is the Euclidean distance from student i to centroid j (K-Means centroids).
 2. Expand the matrix by replicating each centroid column t times to form an N×N matrix.
@@ -204,13 +204,13 @@ The Hungarian Algorithm solves the balanced assignment problem directly. Given N
 
 By replicating each centroid exactly t times, the permutation constraint forces each centroid to be assigned to exactly t students — guaranteeing balanced team sizes. Overflow students (N mod k ≠ 0) are assigned greedily to their nearest centroid. With N = 31, k = 8, t = 3, seven overflow students are assigned this way.
 
-We use `scipy.optimize.linear_sum_assignment`, which implements the Jonker-Volgenant refinement running in O(N³).
+We use `scipy.optimize.linear_sum_assignment`, which implements the Jonker-Volgenant refinement (Jonker & Volgenant, 1987).
 
 ### 4.5 Gaussian Mixture Model (GMM) ★
 
 **GMM also satisfies the "beyond class" rubric requirement.**
 
-GMM models the data as a mixture of k multivariate Gaussian distributions and estimates parameters via the **Expectation-Maximization (EM)** algorithm, alternating between computing posterior responsibilities (E-step) and re-estimating component parameters weighted by those responsibilities (M-step).
+The formulation below follows Bishop (2006, Chapter 9). GMM models the data as a mixture of k multivariate Gaussian distributions and estimates parameters via the **Expectation-Maximization (EM)** algorithm, alternating between computing posterior responsibilities (E-step) and re-estimating component parameters weighted by those responsibilities (M-step).
 
 Unlike K-Means, GMM produces **soft assignments** — a probability vector over components for each student. A student with max posterior = 0.51 is *genuinely ambiguous* between two skill archetypes and can be flagged for human review. We applied GMM to the **complementarity feature set** (8 skill dimensions only) to identify latent skill archetypes and ensure every deployed team contains skill diversity.
 
@@ -349,6 +349,8 @@ An ARI of 0.34 is moderate — removing GPA reshuffles a meaningful fraction of 
 
 The system is explicitly a **recommendation tool**, not an autonomous decision-maker. Its output is a *set* of candidate team configurations with interpretable metrics. The instructor makes final decisions and can override based on context the algorithm cannot see — interpersonal conflicts, disability accommodations, previous team history, or external commitments.
 
+This is a deliberate design choice to preserve instructor judgment and prevent algorithmic rigidity from harming students (Akgun & Greenhow, 2022).
+
 ### 8.2 Fairness Considerations
 
 **Demographic variables explicitly excluded.** The survey does not collect race, gender, ethnicity, nationality, disability, or socioeconomic status. GPA is the only potentially demographic-correlated variable, collected optionally with an explicit "Prefer not to say" option.
@@ -392,7 +394,7 @@ The Teammate Matcher demonstrates that optimal academic team formation requires 
 
 ## 10. Code Organization & Reproducibility
 
-Full repository: [github.com/HPAuncc/teammate-matcher](https://github.com/HPAuncc/teammate-matcher)
+This section documents the structure of the source code and how to reproduce every result in the report. The full repository link appears at the end of the report (Section 11).
 
 ```
 teammate-matcher/
@@ -421,7 +423,34 @@ teammate-matcher/
     └── evaluation_metrics.csv
 ```
 
-All random processes seeded with `random_state = 42`. Notebooks are numbered and should be run in sequence.
+### Reproducibility
+
+- All random processes seeded with `random_state = 42`.
+- `run_pipeline()` in `src/preprocess.py` is the single entry point from raw CSV to processed features.
+- `run_all_models()` in `src/models.py` fits all four models with consistent configuration.
+- `evaluate_all()` in `src/evaluate.py` produces the comparison table.
+- Notebooks are numbered and should be run in sequence. Each notebook also stands alone — later notebooks re-run the pipeline from raw data.
+
+### Running the Full Pipeline
+
+```bash
+# From repository root, with raw_survey_responses.csv in data/
+python src/preprocess.py       # produces data/processed_survey_data.csv
+
+# Then either run the notebooks in order, or:
+python -c "
+from src.preprocess import run_pipeline
+from src.models    import run_all_models
+from src.evaluate  import evaluate_all, print_comparison_table
+
+df, fsets = run_pipeline()
+results   = run_all_models(fsets['compatibility'], fsets['complementarity'])
+eval_df   = evaluate_all(fsets['compatibility'].values,
+                          fsets['complementarity'].values,
+                          df, results)
+print_comparison_table(eval_df)
+"
+```
 
 ---
 
@@ -457,4 +486,12 @@ Waskom, M. L. (2021). seaborn: Statistical data visualization. *Journal of Open 
 
 Claude (Anthropic) was used as a coding assistant throughout development.
 
-**Repository:** [github.com/HPAuncc/teammate-matcher](https://github.com/HPAuncc/teammate-matcher)
+### Repository
+
+Full source code, preprocessing pipeline, model wrappers, evaluation metrics, Jupyter notebooks, and all generated figures are available at:
+
+> [**github.com/HPAuncc/teammate-matcher**](https://github.com/HPAuncc/teammate-matcher)
+
+---
+
+*Prepared for DTSC 2302, Final Project, University of North Carolina at Charlotte, May 2026.*

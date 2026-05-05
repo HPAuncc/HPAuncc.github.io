@@ -19,7 +19,7 @@ Group projects are everywhere in higher education, and yet the way teams get for
 
 So we asked the obvious question: **could a data-driven approach do better?**
 
-That question turned into the *Teammate Matcher* — a recommendation tool, not an autonomous decision-maker, that uses machine learning to surface team configurations an instructor can review and adjust. This post is the public-facing version of that work. The full mathematical write-up lives in the [technical report](technical_report.md) on our project repository.
+That question turned into the *Teammate Matcher* — a recommendation tool, not an autonomous decision-maker, that uses machine learning to surface team configurations an instructor can review and adjust. This post is the public-facing version of that work. The full mathematical write-up lives in the [technical report](https://hamptonabbott.com/projects/teammate-matcher-report) on our project repository.
 
 ---
 

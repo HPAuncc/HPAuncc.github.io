@@ -76,6 +76,13 @@ The survey was deployed via Google Forms and organized into five sections:
 | 4. Work Style | Role, deadline approach, communication, check-in, collaboration, detail focus, conflict style | Work-style compatibility |
 | 5. Self-Assessment | GPA band (optional), top contributions, biggest pain point | Self-knowledge signals |
 
+**Survey design choices:**
+
+- **Ordinal Likert for skills** (1–5) captures relative confidence without forcing binary self-categorization.
+- **Checkbox multi-select for schedule** allows expression of disjoint availability (e.g., "weekends only" or "MWF plus evenings").
+- **Optional GPA** was selected to reduce response pressure; Section 5.4 shows GPA has a moderate effect on assignments, motivating a deployment protocol that presents both with-GPA and without-GPA configurations to the instructor.
+- **"Prefer not to say" option** for GPA explicitly signals that the student chose not to respond (distinguishable from accidental skip).
+
 ### 2.3 Dataset Characteristics
 
 | Property | Value |
@@ -85,6 +92,8 @@ The survey was deployed via Google Forms and organized into five sections:
 | Features after preprocessing | 50 |
 | Missing values | 2 (both GPA) |
 | Year distribution | Juniors 13, Sophomores 11, Freshmen 4, Graduate 2, Senior 1 |
+
+**Sample size rationale:** 31 responses is sufficient to form 7–8 teams of 3–5 students, the target deployment scale. It limits statistical generalization, but the goal is not population inference — it is optimal team formation within this cohort.
 
 **Cohort availability profile:**
 
@@ -422,7 +431,7 @@ All random processes seeded with `random_state = 42`. Notebooks are numbered and
 
 [2] H. W. Kuhn, "The Hungarian method for the assignment problem," *Naval Research Logistics Quarterly*, vol. 2, no. 1–2, pp. 83–97, 1955.
 
-[3] S. Akgun and C. Greenhow, "Artificial intelligence in education: Addressing ethical challenges in K-12 settings," *AI and Ethics*, vol. 2, 2022.
+[3] S. Akgun and C. Greenhow, "Artificial intelligence in education: Addressing ethical challenges in K-12 settings," *AI and Ethics*, vol. 2, 2022. Available: https://pmc.ncbi.nlm.nih.gov/articles/PMC8455229/
 
 [4] C. M. Bishop, *Pattern Recognition and Machine Learning*. Springer, 2006.
 

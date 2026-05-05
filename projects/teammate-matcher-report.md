@@ -23,7 +23,7 @@ Principal Component Analysis confirmed that availability and work-style are the 
 
 ### 1.1 Problem Statement
 
-The success of academic group projects depends heavily on team composition. Prior research has established that random assignment and student self-selection both produce suboptimal outcomes — including uneven distribution of work, scheduling conflicts, and mismatched work styles [1]. These issues hinder the pedagogical goals of collaborative assignments and cause measurable frustration among students.
+The success of academic group projects depends heavily on team composition. Prior research has established that random assignment and student self-selection both produce suboptimal outcomes — including uneven distribution of work, scheduling conflicts, and mismatched work styles (Kyprianidou et al., 2012). These issues hinder the pedagogical goals of collaborative assignments and cause measurable frustration among students.
 
 The **Teammate Matcher** addresses this problem by developing an automated, data-driven recommendation system for team formation, using directly measured student attributes collected via primary survey data. Unlike prior approaches that rely on indirect behavioral proxies (e.g., Learning Management System click counts, course forum activity), this system uses attributes most relevant to actual teamwork: self-reported technical skills, weekly availability, communication preferences, and work style.
 
@@ -427,18 +427,34 @@ All random processes seeded with `random_state = 42`. Notebooks are numbered and
 
 ## 11. References & AI Transparency
 
-[1] M. Kyprianidou, S. Demetriadis, T. Tsiatsos, and A. Pombortsis, "Group formation based on learning styles: can it improve students' teamwork?" *Educational Technology Research and Development*, vol. 60, pp. 83–110, 2012.
+### References
 
-[2] H. W. Kuhn, "The Hungarian method for the assignment problem," *Naval Research Logistics Quarterly*, vol. 2, no. 1–2, pp. 83–97, 1955.
+Akgun, S., & Greenhow, C. (2022). Artificial intelligence in education: Addressing ethical challenges in K-12 settings. *AI and Ethics*, *2*, 431–440. https://pmc.ncbi.nlm.nih.gov/articles/PMC8455229/
 
-[3] S. Akgun and C. Greenhow, "Artificial intelligence in education: Addressing ethical challenges in K-12 settings," *AI and Ethics*, vol. 2, 2022. Available: https://pmc.ncbi.nlm.nih.gov/articles/PMC8455229/
+Bishop, C. M. (2006). *Pattern recognition and machine learning*. Springer.
 
-[4] C. M. Bishop, *Pattern Recognition and Machine Learning*. Springer, 2006.
+Harris, C. R., Millman, K. J., van der Walt, S. J., Gommers, R., Virtanen, P., Cournapeau, D., Wieser, E., Taylor, J., Berg, S., Smith, N. J., Kern, R., Picus, M., Hoyer, S., van Kerkwijk, M. H., Brett, M., Haldane, A., del Río, J. F., Wiebe, M., Peterson, P., … Oliphant, T. E. (2020). Array programming with NumPy. *Nature*, *585*(7825), 357–362. https://doi.org/10.1038/s41586-020-2649-2
 
-[5] R. Jonker and A. Volgenant, "A shortest augmenting path algorithm for dense and sparse linear assignment problems," *Computing*, vol. 38, pp. 325–340, 1987.
+Hunter, J. D. (2007). Matplotlib: A 2D graphics environment. *Computing in Science & Engineering*, *9*(3), 90–95. https://doi.org/10.1109/MCSE.2007.55
 
-**Software:** Python 3.12, pandas, NumPy, scikit-learn (K-Means, Agglomerative, GMM, PCA), SciPy (Hungarian Algorithm via `linear_sum_assignment`), matplotlib, seaborn.
+Jonker, R., & Volgenant, A. (1987). A shortest augmenting path algorithm for dense and sparse linear assignment problems. *Computing*, *38*(4), 325–340. https://doi.org/10.1007/BF02278710
 
-**AI Tool Transparency:** Claude (Anthropic) was used as a coding assistant throughout development.
+Kuhn, H. W. (1955). The Hungarian method for the assignment problem. *Naval Research Logistics Quarterly*, *2*(1–2), 83–97. https://doi.org/10.1002/nav.3800020109
+
+Kyprianidou, M., Demetriadis, S., Tsiatsos, T., & Pombortsis, A. (2012). Group formation based on learning styles: Can it improve students' teamwork? *Educational Technology Research and Development*, *60*(1), 83–110. https://doi.org/10.1007/s11423-011-9215-4
+
+McKinney, W. (2010). Data structures for statistical computing in Python. In S. van der Walt & J. Millman (Eds.), *Proceedings of the 9th Python in Science Conference* (pp. 56–61). https://doi.org/10.25080/Majora-92bf1922-00a
+
+Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J., Passos, A., Cournapeau, D., Brucher, M., Perrot, M., & Duchesnay, E. (2011). Scikit-learn: Machine learning in Python. *Journal of Machine Learning Research*, *12*, 2825–2830.
+
+Python Software Foundation. (2024). *Python* (Version 3.12) [Computer software]. https://www.python.org/
+
+Virtanen, P., Gommers, R., Oliphant, T. E., Haberland, M., Reddy, T., Cournapeau, D., Burovski, E., Peterson, P., Weckesser, W., Bright, J., van der Walt, S. J., Brett, M., Wilson, J., Millman, K. J., Mayorov, N., Nelson, A. R. J., Jones, E., Kern, R., Larson, E., … van Mulbregt, P. (2020). SciPy 1.0: Fundamental algorithms for scientific computing in Python. *Nature Methods*, *17*(3), 261–272. https://doi.org/10.1038/s41592-019-0686-2
+
+Waskom, M. L. (2021). seaborn: Statistical data visualization. *Journal of Open Source Software*, *6*(60), 3021. https://doi.org/10.21105/joss.03021
+
+### AI Tool Transparency
+
+Claude (Anthropic) was used as a coding assistant throughout development.
 
 **Repository:** [github.com/HPAuncc/teammate-matcher](https://github.com/HPAuncc/teammate-matcher)
